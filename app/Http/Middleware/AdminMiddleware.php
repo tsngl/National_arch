@@ -19,6 +19,8 @@ class AdminMiddleware
     {
         if(Auth::user()->user_type == 'admin'){
             return $next($request);
+        }else if(Auth::user()->user_type == 'shuugch'){
+            return redirect('/layouts/main');
         }else{
             return redirect('/home')->with('status','You are not allowed admin dashboard');
         }

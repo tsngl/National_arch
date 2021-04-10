@@ -54,19 +54,19 @@
           <li class="{{'role-registered' == request()->path() ? 'active' : ''}}">
             <a href="/role-registered">
               <i class="now-ui-icons users_single-02"></i> 
-              <p>Хэрэглэгчийн эрх</p>
+              <p>Тамирчид</p>
             </a>
           </li>
           <li class="{{'users-info' == request()->path() ? 'active' : ''}}">
             <a href="/users-info">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Хэрэглэгчидийн мэдээлэл</p>
+              <p>Тамирчдын мэдээлэл</p>
             </a>
           </li>
           <li class="{{'natifications' == request()->path() ? 'active' : ''}}">
             <a href="./notifications.html">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Нийтлэл</p>
+              <p>Тэмцээнд оролцогчид</p>
             </a>
           </li>
           <li class="active-pro">
@@ -212,16 +212,6 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script src="{{asset('assets/js/sweetalert.js')}}"></script>
-  <script>
-     @if (session('status'))  
-         swal({
-            title: '{{ session('status') }}',
-            icon: '{{ session('statuscode') }}',
-            button: "ОК",
-          });
-     @endif
-  </script>
 
   @yield('scripts')
 </body>

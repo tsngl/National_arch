@@ -10,41 +10,34 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Хэрэглэгч</h4>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
-                    <thead class=" text-primary">
-                      <th>№</th>
+                    <thead class=" text-primary" style="font-style:italic">
                       <th>Нэр</th>
-                      <th>Цол зэрэг</th>
-                      <th>Утасны дугаар</th>
+                      <th>И-Мэйл</th>
                       <th>Хэрэглэгчийн төрөл</th>
-                      <th>ЗАСАХ</th>
-                      <th>УСТГАХ</th>
+                      <th>Нууц үг</th>
+                      <th></th>
+                      <th></th>
                     </thead>
                     <tbody>
                     @foreach($users as $row)
                       <tr>
-                        <td>{{$row->id}}</td>
                         <td>{{$row->first_name}}</td>
-                        <td>{{$row->skill}}</td>
-                        <td>{{$row->phone}}</td>
+                        <td>{{$row->email}}</td>
                         <td>{{$row->user_type}}</td>
+                        <td>{{$row->password}}</td>
                         <td>
-                            <a href="/role-edit/{{$row->id}}" class="btn btn-success">ЗАСАХ</a>
+                            <a href="/role-edit/{{$row->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                         </td>
                         <td>
-                            <form action="/role-delete/{{$row->id}}" method="POST" >
+                            <!--<form action="/role-delete/{{$row->id}}" method="POST" >
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                              <button type="submit" class="btn btn-danger">УСТГАХ</button>
-                            </form>
+                              <button type="submit" class="btn btn-danger btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                            </form>-->
                         </td>
                       </tr>
                     @endforeach
