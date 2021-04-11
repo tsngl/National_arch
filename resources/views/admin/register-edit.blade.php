@@ -35,9 +35,9 @@
                             <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('Хэрэглэгчийн төрөл:') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" type="text" name="user_type" value="{{ $users->user_type }}">
-                                <option value="admin" {{ ( $users->user_type == 'Админ') ? 'selected' : '' }}>Админ</option>
-                                <option value="nariin_bichig" {{ ( $users->user_type == 'Нарийн бичиг') ? 'selected' : '' }}>Нарийн бичиг</option>
-                                <option value="shuugch" {{ ( $users->user_type == 'Шүүгч') ? 'selected' : '' }}>Шүүгч</option>
+                                <option value="Админ" {{ ( $users->user_type == 'Админ') ? 'selected' : '' }}>Админ</option>
+                                <option value="Нарийн бичиг" {{ ( $users->user_type == 'Нарийн бичиг') ? 'selected' : '' }}>Нарийн бичиг</option>
+                                <option value="Шүүгч" {{ ( $users->user_type == 'Шүүгч') ? 'selected' : '' }}>Шүүгч</option>
                             </select>
                             </div>
                          </div>

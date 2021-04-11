@@ -38,3 +38,14 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::delete('/user-info-delete/{id}','Admin\DashboardController@userdelete');
 });
 
+Route::group(['middleware' => ['auth','assistant']], function(){
+    Route::get('/assistant', function () {
+        return view('assistant.dashboard');
+    });
+});
+
+Route::group(['middleware' => ['auth','judge']], function(){
+    Route::get('/judge', function () {
+        return view('judge.dashboard');
+    });
+});

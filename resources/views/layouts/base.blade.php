@@ -60,15 +60,15 @@
           <li class="{{'users-info' == request()->path() ? 'active' : ''}}">
             <a href="/users-info">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Тамирчдын мэдээлэл</p>
+              <p>Онооны самбар</p>
             </a>
           </li>
-          <li class="{{'natifications' == request()->path() ? 'active' : ''}}">
+          <!--<li class="{{'natifications' == request()->path() ? 'active' : ''}}">
             <a href="./notifications.html">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Тэмцээнд оролцогчид</p>
             </a>
-          </li>
+          </li>-->
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons education_atom"></i>

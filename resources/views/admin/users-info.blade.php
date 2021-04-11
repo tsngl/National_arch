@@ -22,8 +22,8 @@
           <input type="text" id="delete-user-id">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Үгүй</button>
+        <button type="submit" class="btn btn-primary">Тийм</button>
       </div>
       </form>
     </div>
@@ -105,7 +105,7 @@
 
             //console.log(data);
 
-            $('#delete-user-id').val(data[0]);
+            $('#delete-user-id').val(data[0]);  
             $('#delete_modal').attr('action','/user-info-delete/'+data[0]);
             $('#deleteModal').modal('show');
         });

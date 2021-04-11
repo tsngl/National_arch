@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Session;
+use Illuminate\Support\Facades\Crypt;
 
 class DashboardController extends Controller
 {
@@ -45,7 +46,6 @@ class DashboardController extends Controller
 
     public function store(Request $request){
         $newUser = new User;
-
         $newUser->last_name = $request->input('last_name');
         $newUser->first_name = $request->input('first_name');
         $newUser->skill = $request->input('skill');
@@ -54,8 +54,20 @@ class DashboardController extends Controller
         $newUser->phone = $request->input('phone');
         $newUser->user_type = $request->input('user_type');
         $newUser->email = $request->input('email');
-        $newUser->password = $request->input('password');
+        $newUser->password =Crypt::encryptString($request->input('password'));
         $newUser->save();
+
+        /*$request->user()->fill([
+            'last_name'=> ($request->last_name),
+            'first_name' => ($request->first_name),
+            'skill' => ($request->skill),
+            'undsen_zahirgaa' => ($request->undsen_zahirgaa),
+            'club' => ($request->club),
+            'phone' => ($request->phone),
+            'user_type' => ($request->user_type),
+            'email' => ($request->email),
+            'password' => Crypt::encryptString($request->password),
+        ])->save();*/
 
         Session::flash('statuscode','success');
         return redirect('/users-info')->with('status','Шинэ хэрэглэгч амжилттай бүртгэгдлээ');

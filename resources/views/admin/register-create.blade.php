@@ -151,9 +151,9 @@
                             <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('Хэрэглэгчийн төрөл:') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" id="user_type" type="text" name="user_type" value="old('user_type')" required autofocus autocomplete="user_type">
-                                <option>admin</option>
-                                <option>nariin_bichig</option>
-                                <option>shuugch</option>
+                                <option>Админ</option>
+                                <option>Нарийн бичиг</option>
+                                <option>Шүүгч</option>
                             </select>
                             </div>
                          </div>

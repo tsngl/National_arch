@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware{
+class JudgeMiddleware
+{
     /**
      * Handle an incoming request.
      *
@@ -16,12 +17,8 @@ class AdminMiddleware{
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->user_type == 'Админ'){
+        if(Auth::user()->user_type == 'Шүүгч'){
             return $next($request);
-        }
-        /*else{
-            return redirect('/home')->with('status','You are not allowed admin dashboard');
-        }*/
-        
+         }
     }
 }

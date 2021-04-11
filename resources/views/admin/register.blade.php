@@ -15,6 +15,7 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
+                      <th>ID</th>
                       <th>Нэр</th>
                       <th>И-Мэйл</th>
                       <th>Хэрэглэгчийн төрөл</th>
@@ -25,6 +26,7 @@
                     <tbody>
                     @foreach($users as $row)
                       <tr>
+                       <td>{{$row->id}}</td>
                         <td>{{$row->first_name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user_type}}</td>
