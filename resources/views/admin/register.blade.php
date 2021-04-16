@@ -11,26 +11,29 @@
               <div class="card-header">
                 <h4 class="card-title">Хэрэглэгч</h4>
               </div>
+              <style>
+                .w-10p{
+                  width: 10% !important;
+                }
+              </style>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th>ID</th>
-                      <th>Нэр</th>
-                      <th>И-Мэйл</th>
-                      <th>Хэрэглэгчийн төрөл</th>
-                      <th>Нууц үг</th>
+                      <th class="w-10p">Овог</th>
+                      <th class="w-10p">Нэр</th>
+                      <th class="w-10p">И-Мэйл</th>
+                      <th class="w-10p">Хэрэглэгчийн төрөл</th>
                       <th></th>
                       <th></th>
                     </thead>
                     <tbody>
                     @foreach($users as $row)
                       <tr>
-                       <td>{{$row->id}}</td>
+                        <td>{{$row->last_name}}</td>
                         <td>{{$row->first_name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user_type}}</td>
-                        <td>{{$row->password}}</td>
                         <td>
                             <a href="/role-edit/{{$row->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                         </td>

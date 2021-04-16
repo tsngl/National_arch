@@ -124,8 +124,8 @@
                                 <option value="Дундговь" {{ ( $users->club == 'Дундговь') ? 'selected' : '' }}>Дундговь</option>
                                 <option value="Завхан" {{ ( $users->club == 'Завхан') ? 'selected' : '' }}>Завхан</option>
                                 <option value="Орхон" {{ ( $users->club == 'Орхон') ? 'selected' : '' }}>Орхон</option>
-                                <option value="Өвөрханга" {{ ( $users->club == 'Өвөрханга') ? 'selected' : '' }}>Өвөрханга</option>
-                                <option value="Өмнөговь" {{ ( $users->club == 'Өмнөговь') ? 'selected' : '' }}>Өмнөговь}</option>
+                                <option value="Өвөрхангай" {{ ( $users->club == 'Өвөрхангай') ? 'selected' : '' }}>Өвөрхангай</option>
+                                <option value="Өмнөговь" {{ ( $users->club == 'Өмнөговь') ? 'selected' : '' }}>Өмнөговь</option>
                                 <option value="Сүхбаатар" {{ ( $users->club == 'Сүхбаатар') ? 'selected' : '' }}>Сүхбаатар</option>
                                 <option value="Сэлэнгэ" {{ ( $users->club == 'Сэлэнгэ') ? 'selected' : '' }}>Сэлэнгэ</option>
                                 <option value="Төв" {{ ( $users->club == 'Төв') ? 'selected' : '' }}>Төв</option>

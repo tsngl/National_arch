@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Session;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -25,7 +26,7 @@ class DashboardController extends Controller
         $users = User::find($id);
         $users->email = $request->input('email');
         $users->user_type = $request->input('user_type');
-        $users->password = $request->input('password');
+        $users->password = Hash::make($request->input('password'));
         $users->update();
 
         Session::flash('statuscode','info');
@@ -54,7 +55,7 @@ class DashboardController extends Controller
         $newUser->phone = $request->input('phone');
         $newUser->user_type = $request->input('user_type');
         $newUser->email = $request->input('email');
-        $newUser->password =Crypt::encryptString($request->input('password'));
+        $newUser->password =Hash::make($request->input('password'));
         $newUser->save();
 
         /*$request->user()->fill([
@@ -103,8 +104,9 @@ class DashboardController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        Session::flash('statuscode','error');
+        Session::flash('statuscode','success');
         return redirect('/users-info')->with('status','Амжилттай устагалаа');
+        //return response()->json(['status'=>'Амжилттай устагалаа']);
     }
 
 }

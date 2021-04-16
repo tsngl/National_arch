@@ -39,8 +39,8 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
-            <a href="/assistant">
+          <li class="{{'judge' == request()->path() ? 'active' : ''}}">
+            <a href="/judge">
               <i class="now-ui-icons design_app"></i>
              <p>Хэрэглэгчийн самбар</p>
             </a>

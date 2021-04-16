@@ -1,13 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('title')
+    Үндэсний сур харваа
+@endsection
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <img  class="mb-2 mt-4 center"  src="assets/img/logo.png" style=" max-width: 75px"/>
+                <div class="card-header">{{ __('Тамирчин нэмэх') }}</div>
+
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/save-created">
                         @csrf
 
                         <div class="form-group row">
@@ -142,6 +147,16 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('Хэрэглэгчийн төрөл:') }}</label>
+                            <div class="col-md-6">
+                            <select class="form-control" id="user_type" type="text" name="user_type" value="old('user_type')" required autofocus autocomplete="user_type">
+                                <option>Админ</option>
+                                <option>Нарийн бичиг</option>
+                                <option>Шүүгч</option>
+                            </select>
+                            </div>
+                         </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('И-Мэйл хаяг:') }}</label>
@@ -179,10 +194,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row ">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Бүртгүүлэх') }}
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="/role-registered" class="btn">
+                                    {{ __('Буцах') }}
+                                </a>
+                                <button type="submit" class="btn btn-success">
+                                    {{ __('Хадгалах') }}
                                 </button>
                             </div>
                         </div>
@@ -192,4 +210,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
 @endsection

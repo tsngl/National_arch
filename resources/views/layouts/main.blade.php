@@ -39,20 +39,20 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
+          <!--<li class="{{'assistant' == request()->path() ? 'active' : ''}}">
             <a href="/assistant">
               <i class="now-ui-icons design_app"></i>
              <p>Хэрэглэгчийн самбар</p>
             </a>
           </li>
-         <!-- <li class="{{'icons' == request()->path() ? 'active' : ''}}">
+          <li class="{{'icons' == request()->path() ? 'active' : ''}}">
             <a href="./icons.html">
               <i class="now-ui-icons education_atom"></i>
               <p>Icons</p>
             </a>
           </li>-->
-          <li class="{{'role-registered' == request()->path() ? 'active' : ''}}">
-            <a href="/role-registered">
+          <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
+            <a href="/assistant">
               <i class="now-ui-icons users_single-02"></i> 
               <p>Тамирчид</p>
             </a>
@@ -65,16 +65,16 @@
           </li>
           <li class="{{'natifications' == request()->path() ? 'active' : ''}}">
             <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
+              <i class="now-ui-icons design_app"></i>
               <p>Тэмцээнд оролцогчид</p>
             </a>
           </li>
-          <li class="active-pro">
+          <!--<li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons education_atom"></i>
               <p>Тэмцээний явц</p>
             </a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>

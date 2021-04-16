@@ -31,7 +31,7 @@
     -->
       <div class="logo">
         <a class="simple-text logo-mini">
-          <img src="assets/img/log.png"/>
+            <img src="assets/img/log.png"/>
         </a>
         <a class="simple-text logo-normal">
           Үндэсний сур харваа

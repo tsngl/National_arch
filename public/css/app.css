@@ -7,8 +7,13 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-.clr{
-  background:blueviolet;
+.center{
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 50%;
+
 }
 :root {
   --blue: #3490dc;
@@ -77,6 +82,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

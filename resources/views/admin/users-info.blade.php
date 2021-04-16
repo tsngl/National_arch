@@ -10,20 +10,18 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" style="text-align:center">Анхаар!</h5>
       </div>
       <form id="delete_model" method="POST" >
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}  
       <div class="modal-body">
-          <input type="text" id="delete-user-id">
+          <input type="hidden" id="delete-user-id">
+          <h5  style="text-align:center">Устгах гэж байна. Итгэлтэй байна уу?</h5>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Үгүй</button>
-        <button type="submit" class="btn btn-primary">Тийм</button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Үгүй</button>
+        <button type="submit" class="btn btn-primary mr-4">Тийм</button>
       </div>
       </form>
     </div>
@@ -41,7 +39,6 @@
                 <div class="table-responsive">
                   <table id="datatable" class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th>ID</th>
                       <th>Овог</th>
                       <th>Нэр</th>
                       <th>Цол зэрэг</th>
@@ -54,7 +51,7 @@
                     <tbody>
                     @foreach($users as $row)
                       <tr>
-                        <td>{{$row->id}}</td>
+                        <input type="hidden" class="delete_val_id" value="{{$row->id}}">
                         <td>{{$row->last_name}}</td>
                         <td>{{$row->first_name}}</td>
                         <td>{{$row->skill}}</td>
@@ -65,7 +62,7 @@
                             <a href="/user-info-edit/{{$row->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                         </td>
                         <td>
-                        <a href="javascript:void(0)" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></a>
+                        <button type="button" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                         </td>
                       </tr>
                     @endforeach
@@ -92,23 +89,25 @@
 @endsection
 
 @section('scripts')
-  <script>
+   <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
 
-        $('#datatable').on('click', '.delete_btn', function(){
-            $tr =$(this).closest('tr');
-
-            var data =$tr.children("td").map(function(){
-              return $(this).text();
-            }).get();
-
-            //console.log(data);
-
-            $('#delete-user-id').val(data[0]);  
-            $('#delete_modal').attr('action','/user-info-delete/'+data[0]);
-            $('#deleteModal').modal('show');
-        });
-    } );
+    });
   </script>
-@endsection
+
+  <script>
+     $(document).ready(function() {
+        $('.delete_btn').click(function (e){
+              e.preventDefault();
+              
+              var delete_id = $(this).closest("tr").find('.delete_val_id').val();
+              //alert(delete_id);
+
+              $('#delete-user-id').val(delete_id);  
+              $('#delete_model').attr('action','/user-info-delete/'+delete_id);
+              $('#deleteModal').modal('show');
+        });
+     });
+  </script>
+@endsection('scripts')
