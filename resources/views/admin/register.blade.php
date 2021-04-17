@@ -11,19 +11,14 @@
               <div class="card-header">
                 <h4 class="card-title">Хэрэглэгч</h4>
               </div>
-              <style>
-                .w-10p{
-                  width: 10% !important;
-                }
-              </style>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th class="w-10p">Овог</th>
-                      <th class="w-10p">Нэр</th>
-                      <th class="w-10p">И-Мэйл</th>
-                      <th class="w-10p">Хэрэглэгчийн төрөл</th>
+                      <th>Овог</th>
+                      <th>Нэр</th>
+                      <th>И-Мэйл</th>
+                      <th>Хэрэглэгчийн төрөл</th>
                       <th></th>
                       <th></th>
                     </thead>

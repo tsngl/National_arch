@@ -39,9 +39,13 @@ Route::group(['middleware' => ['auth','admin']], function(){
 });
 
 Route::group(['middleware' => ['auth','assistant']], function(){
-    Route::get('/assistant', function () {
-        return view('assistant.dashboard');
-    });
+    Route::get('/assistant','Assistant\AthletesController@athlete');
+    Route::get('/athletes-info','Assistant\AthletesController@athletesinfo');
+    Route::get('/add-athletes', 'Assistant\AthletesController@athletesadd');
+    Route::post('/save-created','Assistant\AthletesController@store');
+    Route::get('/athlete-edit/{id}','Assistant\AthletesController@athletesedit');
+    Route::put('/athletes-update/{id}','Assistant\AthletesController@athletesupdate');
+    Route::delete('/athlete-delete/{id}','Assistant\AthletesController@athletesdelete');
 });
 
 Route::group(['middleware' => ['auth','judge']], function(){

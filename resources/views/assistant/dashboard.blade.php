@@ -27,6 +27,7 @@
                       <th class="w-10p">Харъяа клуб</th>
                     </thead>
                     <tbody>
+                    @foreach($athletes as $person)
                       <tr>
                         <td>
                             <div class="form-check">
@@ -36,11 +37,12 @@
                               </label>
                             </div>
                           </td>
-                        <td>Буманчимэг</td>
-                        <td>Цэнгэлмаа</td>
-                        <td>Залуу харваач</td>
-                        <td>Хилчин спорт хороо</td>
+                        <td>{{$person->last_name}}</td>
+                        <td>{{$person->first_name}}</td>
+                        <td>{{$person->skill}}</td>
+                        <td>{{$person->club}}</td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

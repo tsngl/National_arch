@@ -44,6 +44,16 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Хүйс:') }}</label>
+                            <div class="col-md-6">
+                            <select class="form-control" id="gender" type="text" name="gender" value="old('gender')" required autofocus autocomplete="gender">
+                                <option>Эр</option>
+                                <option>Эм</option>
+                            </select>
+                            </div>
+                         </div>
+
+                        <div class="form-group row">
                             <label for="skill" class="col-md-4 col-form-label text-md-right">{{ __('Цол зэрэг:') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" id="skill" type="text" name="skill" value="old('skill')" required autofocus autocomplete="skill">
@@ -147,56 +157,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('Хэрэглэгчийн төрөл:') }}</label>
-                            <div class="col-md-6">
-                            <select class="form-control" id="user_type" type="text" name="user_type" value="old('user_type')" required autofocus autocomplete="user_type">
-                                <option>Админ</option>
-                                <option>Нарийн бичиг</option>
-                                <option>Шүүгч</option>
-                            </select>
-                            </div>
-                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('И-Мэйл хаяг:') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Нууц үг:') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Нүүг үг баталгаажуулах:') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a href="/role-registered" class="btn">
+                                <a href="/athletes-info" class="btn">
                                     {{ __('Буцах') }}
                                 </a>
                                 <button type="submit" class="btn btn-success">

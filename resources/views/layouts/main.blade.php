@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/log.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -57,8 +58,8 @@
               <p>Тамирчид</p>
             </a>
           </li>
-          <li class="{{'users-info' == request()->path() ? 'active' : ''}}">
-            <a href="/users-info">
+          <li class="{{'athletes-info' == request()->path() ? 'active' : ''}}">
+            <a href="/athletes-info">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Тамирчдын мэдээлэл</p>
             </a>
@@ -212,7 +213,16 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-
+  <script src="{{asset('assets/js/sweetalert.js')}}"></script>
+  <script>
+     @if (session('status'))  
+         swal({
+            title: '{{ session('status') }}',
+            icon: '{{ session('statuscode') }}',
+            button: "ОК",
+          });
+     @endif
+  </script>
   @yield('scripts')
 </body>
 

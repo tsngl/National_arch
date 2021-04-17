@@ -104,9 +104,9 @@ class DashboardController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        Session::flash('statuscode','success');
-        return redirect('/users-info')->with('status','Амжилттай устагалаа');
-        //return response()->json(['status'=>'Амжилттай устагалаа']);
+        // Session::flash('statuscode','success');
+        // return redirect('/users-info')->with('status','Амжилттай устагалаа');
+        return response()->json(['status'=>'Хэрэглэгчийг бүртгэлээс устагалаа']);
     }
 
 }
