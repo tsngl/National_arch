@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::put('/role-register-update/{id}','Admin\DashboardController@registerupdate');
     //Route::delete('/role-delete/{id}','Admin\DashboardController@registerdelete');
     Route::get('register-create','Admin\DashboardController@registercreate');
-    Route::post('/save-created','Admin\DashboardController@store');
+    Route::post('/save-new-register','Admin\DashboardController@store');
 
     Route::get('/users-info', 'Admin\DashboardController@users' );
     Route::get('/user-info-edit/{id}', 'Admin\DashboardController@useredit');

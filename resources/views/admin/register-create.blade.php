@@ -12,7 +12,7 @@
                 <div class="card-header">{{ __('Шинэ хэрэглэгч нэмэх') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/save-created">
+                    <form method="POST" action="/save-new-register">
                         @csrf
 
                         <div class="form-group row">
