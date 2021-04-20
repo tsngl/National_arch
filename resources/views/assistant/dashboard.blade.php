@@ -23,6 +23,7 @@
                       <th class="w-10p"></th>
                       <th class="w-10p">Овог</th>
                       <th class="w-10p">Нэр</th>
+                      <th class="w-10p">Хүйс</th>
                       <th class="w-10p">Цол зэрэг</th>
                       <th class="w-10p">Харъяа клуб</th>
                     </thead>
@@ -39,6 +40,7 @@
                           </td>
                         <td>{{$person->last_name}}</td>
                         <td>{{$person->first_name}}</td>
+                        <td>{{$person->gender}}</td>
                         <td>{{$person->skill}}</td>
                         <td>{{$person->club}}</td>
                       </tr>
