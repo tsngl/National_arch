@@ -20,7 +20,14 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th class="w-10p"></th>
+                      <th class="w-10p">
+                          <div class="form-check ">
+                              <label class="form-check-label">
+                                <input class="form-check-input checked_all" type="checkbox">
+                                <span class="form-check-sign"></span>
+                              </label>
+                            </div>
+                      </th>
                       <th class="w-10p">Овог</th>
                       <th class="w-10p">Нэр</th>
                       <th class="w-10p">Хүйс</th>
@@ -33,7 +40,7 @@
                         <td>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input checkbox" type="checkbox">
                                 <span class="form-check-sign"></span>
                               </label>
                             </div>
@@ -55,4 +62,17 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+      $('.checked_all').on('change', function() {     
+                $('.checkbox').prop('checked', $(this).prop("checked"));              
+        });
+        //deselect "checked all", if one of the listed checkbox product is unchecked amd select "checked all" if all of the listed checkbox product is checked
+        $('.checkbox').change(function(){ //".checkbox" change 
+            if($('.checkbox:checked').length == $('.checkbox').length){
+                   $('.checked_all').prop('checked',true);
+            }else{
+                   $('.checked_all').prop('checked',false);
+            }
+        });
+</script>
 @endsection
