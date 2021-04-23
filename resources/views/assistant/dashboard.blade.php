@@ -23,7 +23,7 @@
                       <th class="w-10p">
                           <div class="form-check ">
                               <label class="form-check-label">
-                                <input class="form-check-input checked_all" type="checkbox">
+                                <input class="form-check-input" id="chkCheckAll" type="checkbox">
                                 <span class="form-check-sign"></span>
                               </label>
                             </div>
@@ -36,11 +36,11 @@
                     </thead>
                     <tbody>
                     @foreach($athletes as $person)
-                      <tr>
+                      <tr id="sid{{$person->id}}">
                         <td>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input class="form-check-input checkbox" type="checkbox">
+                                <input class="form-check-input checkBoxClass" type="checkbox" name="ids" value="{{$person->id}}"/>
                                 <span class="form-check-sign"></span>
                               </label>
                             </div>
@@ -54,7 +54,9 @@
                       @endforeach
                     </tbody>
                   </table>
+                  <button type="button" id="selectedAll" class="btn btn-success btn-sm">ТЭМЦЭЭНД ОРОЛЦОХ</button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
@@ -62,7 +64,7 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
+<!--<script type="text/javascript">
       $('.checked_all').on('change', function() {     
                 $('.checkbox').prop('checked', $(this).prop("checked"));              
         });
@@ -74,5 +76,37 @@
                    $('.checked_all').prop('checked',false);
             }
         });
-</script>
+</script>-->
+<!--<script>
+  $(function(e){
+
+      $("#chkCheckAll").click(function(){
+          $(".checkBoxClass").prop('checked', $(this).prop("checked")); 
+      });
+
+      $("#selectedAll").click(function(e){
+        e.preventDefault();
+        var allids = [];
+
+        $("input:checkbox[name=ids]:checked").each(function(){
+            allids.push($(this).val());
+        });
+          //alert(allids);
+
+        $.ajax({
+            url:"/participate",
+            type: "DELETE",
+            data:{
+                _token:$("input[name=_token]").val(),
+                ids:allids
+            },
+            success: function(response){
+              $.each(allids, function(key,val){
+                $("#sid"+val).remove();
+              })
+            }
+        });
+      })
+  });
+</script>-->
 @endsection

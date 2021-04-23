@@ -60,4 +60,14 @@ class AthletesController extends Controller
 
         return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
     }
+
+    public function participate(Request $request){
+        $get_ids = $request->ids;
+        $ids = explode(',', $get_ids);
+        $find_selected = Athletes::whereIn('id',$ids)->get();
+        return dd($find_selected);
+
+        //return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
+        
+    }
 }

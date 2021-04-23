@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/athlete-edit/{id}','Assistant\AthletesController@athletesedit');
     Route::put('/athletes-update/{id}','Assistant\AthletesController@athletesupdate');
     Route::delete('/athlete-delete/{id}','Assistant\AthletesController@athletesdelete');
+    Route::post('/participate','Assistant\AthletesController@participate');
 });
 
 Route::group(['middleware' => ['auth','judge']], function(){
