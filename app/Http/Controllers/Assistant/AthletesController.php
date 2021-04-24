@@ -80,9 +80,14 @@ class AthletesController extends Controller
        
     }
 
-    public function selectedAllAthletesDelete(Request $request){
+    public function participantAthletes(){
+        $participant = Participate::all();
+        return view('assistant.participate-athletes')->with('participant', $participant);
+    }
+
+    public function participantDelete(Request $request){
         $ids = $request->ids;
-        Athletes::whereIn('id',$ids)->delete();
+        Participate::whereIn('id',$ids)->delete();
         return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
     }
 }

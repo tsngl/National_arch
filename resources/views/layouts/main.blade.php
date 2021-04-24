@@ -64,8 +64,8 @@
               <p>Тамирчдын мэдээлэл</p>
             </a>
           </li>
-          <li class="{{'natifications' == request()->path() ? 'active' : ''}}">
-            <a href="./notifications.html">
+          <li class="{{'participant-athletes' == request()->path() ? 'active' : ''}}">
+            <a href="/participant-athletes">
               <i class="now-ui-icons design_app"></i>
               <p>Тэмцээнд оролцогчид</p>
             </a>

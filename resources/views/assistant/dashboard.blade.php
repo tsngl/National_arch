@@ -23,12 +23,12 @@
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
                       <th>
-                          <div class="form-check ">
+                          <!--<div class="form-check ">
                               <label class="form-check-label">
                                 <input class="form-check-input" id="chkCheckAll" type="checkbox">
                                 <span class="form-check-sign"></span>
                               </label>
-                            </div>
+                            </div>-->
                       </th>
                       <th>Овог</th>
                       <th>Нэр</th>
@@ -56,7 +56,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                    <input type="submit" class="btn btn-success btn-sm save_btn" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
+                    <input type="submit" class="btn btn-success btn-sm save_btn float-right" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
                 </div>
                 </form>
               </div>
@@ -132,12 +132,11 @@
               },
               success: function(response){
                   if(response.status){
-                        $('#notifDiv').fadeIn();
-                        $('#notifDiv').css('background', 'green');
-                        $('#notifDiv').text('Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ');
-                        setTimeout(() => {
-                            $('#notifDiv').fadeOut();
-                        }, 3000);
+                        swal({
+                            title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
+                            icon: 'success',
+                            button: "ОК",
+                          });
                         $('input[type="checkbox"]').prop('checked',false);
                   } else{
                     console.log('error');

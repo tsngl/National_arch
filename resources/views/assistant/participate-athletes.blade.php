@@ -28,33 +28,33 @@
                               </label>
                             </div>
                       </th>
-                      <th class="w-10p">Овог</th>
-                      <th class="w-10p">Нэр</th>
-                      <th class="w-10p">Хүйс</th>
-                      <th class="w-10p">Цол зэрэг</th>
-                      <th class="w-10p">Харъяа клуб</th>
+                      <th>Овог</th>
+                      <th>Нэр</th>
+                      <th>Хүйс</th>
+                      <th>Цол зэрэг</th>
+                      <th>Харъяа клуб</th>
                     </thead>
                     <tbody>
-                    @foreach($athletes as $person)
-                      <tr id="sid{{$person->id}}">
+                    @foreach($participant as $athlete)
+                      <tr id="sid{{$athlete->id}}">
                         <td>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input class="form-check-input checkBoxClass" type="checkbox" name="ids" value="{{$person->id}}"/>
+                                <input class="form-check-input checkBoxClass" type="checkbox" name="ids" value="{{$athlete->id}}"/>
                                 <span class="form-check-sign"></span>
                               </label>
                             </div>
                           </td>
-                        <td>{{$person->last_name}}</td>
-                        <td>{{$person->first_name}}</td>
-                        <td>{{$person->gender}}</td>
-                        <td>{{$person->skill}}</td>
-                        <td>{{$person->club}}</td>
+                        <td>{{$athlete->last_name}}</td>
+                        <td>{{$athlete->first_name}}</td>
+                        <td>{{$athlete->gender}}</td>
+                        <td>{{$athlete->skill}}</td>
+                        <td>{{$athlete->club}}</td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
-                  <button type="button" id="selectedAll" class="btn btn-success btn-sm">ТЭМЦЭЭНД ОРОЛЦОХ</button>
+                  <button type="button" id="selectedAll" class="btn btn-primary btn-sm float-right">ТЭМЦЭЭНД ОРОЛЦОГЧДЫГ ШИНЭЧЛЭХ</button>
                 </div>
                 </form>
               </div>
@@ -82,8 +82,8 @@
           //alert(allids);
 
         $.ajax({
-            url:"/participate",
-            type: "DELETE",
+            url:'{{route('deleteSelected')}}',
+            type: 'DELETE',
             data:{
                 _token:$("input[name=_token]").val(),
                 ids:allids
