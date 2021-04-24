@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Assistant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Athletes;
+use App\Models\Participate;
 use Session;
 
 class AthletesController extends Controller
@@ -62,12 +63,26 @@ class AthletesController extends Controller
     }
 
     public function participate(Request $request){
-        $get_ids = $request->ids;
-        $ids = explode(',', $get_ids);
-        $find_selected = Athletes::whereIn('id',$ids)->get();
-        return dd($find_selected);
+        $checked_array = $request->id;
+        foreach($request->id as $key => $value){
+            if(in_array($request->id[$key], $checked_array)){
+                $participant = new Participate;
+                $participant->last_name = $request->last_name[$key];
+                $participant->first_name = $request->first_name[$key];
+                $participant->gender = $request->gender[$key];
+                $participant->skill = $request->skill[$key];
+                $participant->club = $request->club[$key];
+                $participant->save();
+            }
+        }
 
-        //return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
-        
+        return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
+       
+    }
+
+    public function selectedAllAthletesDelete(Request $request){
+        $ids = $request->ids;
+        Athletes::whereIn('id',$ids)->delete();
+        return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
     }
 }

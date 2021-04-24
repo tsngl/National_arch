@@ -16,11 +16,13 @@
                   width: 10% !important;
                 }
               </style>
+              <div id="notifDiv"></div>
               <div class="card-body">
+              <form> <!--  action="/participate" method="post" id="validate" -->
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th class="w-10p">
+                      <th>
                           <div class="form-check ">
                               <label class="form-check-label">
                                 <input class="form-check-input" id="chkCheckAll" type="checkbox">
@@ -28,33 +30,33 @@
                               </label>
                             </div>
                       </th>
-                      <th class="w-10p">Овог</th>
-                      <th class="w-10p">Нэр</th>
-                      <th class="w-10p">Хүйс</th>
-                      <th class="w-10p">Цол зэрэг</th>
-                      <th class="w-10p">Харъяа клуб</th>
+                      <th>Овог</th>
+                      <th>Нэр</th>
+                      <th>Хүйс</th>
+                      <th>Цол зэрэг</th>
+                      <th>Харъяа клуб</th>
                     </thead>
                     <tbody>
                     @foreach($athletes as $person)
-                      <tr id="sid{{$person->id}}">
+                      <tr>
                         <td>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input class="form-check-input checkBoxClass" type="checkbox" name="ids" value="{{$person->id}}"/>
+                                <input class="form-check-input athlete-id" type="checkbox" name="id[]" value="{{$person->id}}"/>
                                 <span class="form-check-sign"></span>
                               </label>
                             </div>
                           </td>
-                        <td>{{$person->last_name}}</td>
-                        <td>{{$person->first_name}}</td>
-                        <td>{{$person->gender}}</td>
-                        <td>{{$person->skill}}</td>
-                        <td>{{$person->club}}</td>
+                        <td>{{$person->last_name}}<input type="hidden" name="last_name[]" class="last_name" value="{{$person->last_name}}"></td>
+                        <td>{{$person->first_name}}<input type="hidden" name="first_name[]" class="first_name" value="{{$person->first_name}}"></td>
+                        <td>{{$person->gender}}<input type="hidden" name="gender[]" class="gender" value="{{$person->gender}}"></td>
+                        <td>{{$person->skill}}<input type="hidden" name="skill[]" class="skill" value="{{$person->skill}}"></td>
+                        <td>{{$person->club}}<input type="hidden" name="club[]" class="club" value="{{$person->club}}"></td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
-                  <button type="button" id="selectedAll" class="btn btn-success btn-sm">ТЭМЦЭЭНД ОРОЛЦОХ</button>
+                    <input type="submit" class="btn btn-success btn-sm save_btn" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
                 </div>
                 </form>
               </div>
@@ -77,36 +79,77 @@
             }
         });
 </script>-->
-<!--<script>
-  $(function(e){
+<script>
+  $(document).ready(function(){
 
-      $("#chkCheckAll").click(function(){
-          $(".checkBoxClass").prop('checked', $(this).prop("checked")); 
+      $('.save_btn').on('click', function(e){
+          e.preventDefault();
+
+          const id = [];
+          const last_name = [];
+          const first_name = [];
+          const gender = [];
+          const skill = [];
+          const club = [];
+
+          $('.athlete-id').each(function(){
+              if($(this).is(":checked")){
+                id.push($(this).val());
+              }
+          });
+
+          $('input[name^="last_name"]').each(function(){
+              last_name.push($(this).val());
+          });
+
+          $('input[name^="first_name"]').each(function(){
+              first_name.push($(this).val());
+          });
+
+          $('input[name^="gender"]').each(function(){
+              gender.push($(this).val());
+          });
+
+          $('input[name^="skill"]').each(function(){
+              skill.push($(this).val());
+          });
+
+          $('input[name^="club"]').each(function(){
+              club.push($(this).val());
+          });
+
+          $.ajax({
+              url: '{{route('participate.athletes')}}',
+              type: 'POST',
+              data: {
+                  "_token" : "{{csrf_token()}}",
+                  id : id,
+                  last_name : last_name,
+                  first_name : first_name,
+                  gender : gender,
+                  skill : skill,
+                  club : club
+              },
+              success: function(response){
+                  if(response.status){
+                        $('#notifDiv').fadeIn();
+                        $('#notifDiv').css('background', 'green');
+                        $('#notifDiv').text('Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ');
+                        setTimeout(() => {
+                            $('#notifDiv').fadeOut();
+                        }, 3000);
+                        $('input[type="checkbox"]').prop('checked',false);
+                  } else{
+                    console.log('error');
+                  }
+              },
+              error: function(response){
+                console.log('error');
+              }
+          });
+
       });
-
-      $("#selectedAll").click(function(e){
-        e.preventDefault();
-        var allids = [];
-
-        $("input:checkbox[name=ids]:checked").each(function(){
-            allids.push($(this).val());
-        });
-          //alert(allids);
-
-        $.ajax({
-            url:"/participate",
-            type: "DELETE",
-            data:{
-                _token:$("input[name=_token]").val(),
-                ids:allids
-            },
-            success: function(response){
-              $.each(allids, function(key,val){
-                $("#sid"+val).remove();
-              })
-            }
-        });
-      })
+      
   });
-</script>-->
+</script>
 @endsection
