@@ -54,7 +54,6 @@ Route::group(['middleware' => ['auth','assistant']], function(){
 });
 
 Route::group(['middleware' => ['auth','judge']], function(){
-    Route::get('/judge', function () {
-        return view('judge.dashboard');
-    });
+    Route::get('/judge', 'Judge\JudgeController@viewathletes');
+    Route::get('/scoreboard','Judge\JudgeController@scoreboard');
 });

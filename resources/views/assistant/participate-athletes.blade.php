@@ -54,7 +54,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <button type="button" id="selectedAll" class="btn btn-primary btn-sm float-right">ТЭМЦЭЭНД ОРОЛЦОГЧДЫГ ШИНЭЧЛЭХ</button>
+                  <button type="button" id="selectedAll" class="btn btn-warning btn-sm float-right">ТЭМЦЭЭНД ОРОЛЦОГЧДЫГ ШИНЭЧЛЭХ</button>
                 </div>
                 </form>
               </div>
