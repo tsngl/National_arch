@@ -90,4 +90,11 @@ class AthletesController extends Controller
         Participate::whereIn('id',$ids)->delete();
         return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
     }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $athletes = Athletes::where('first_name', 'LIKE', '%'.$search_text.'%')->get();
+        
+        return view('assistant.search',compact('athletes'));
+    }
 }
