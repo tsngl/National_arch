@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Athletes;
 use App\Models\Participate;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 class AthletesController extends Controller
 {
     public function athlete(){
         $athletes = Athletes::all();
+        $athletes = DB::table('athletes')->paginate(3);
         return view('assistant.dashboard')->with('athletes', $athletes);
     }
     public function athletesinfo(){

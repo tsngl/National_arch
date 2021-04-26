@@ -15,6 +15,16 @@
                 .w-10p{
                   width: 10% !important;
                 }
+                .pagination {
+                  display: inline-block;
+                }
+
+                .pagination a {
+                  color: black;
+                  float: left;
+                  padding: 8px 16px;
+                  text-decoration: none;
+                }
               </style>
               <div id="notifDiv"></div>
               <div class="card-body">
@@ -71,6 +81,9 @@
             </div>
           </div>
         </div>
+                    <div>
+                        {{$athletes->links()}}
+                    </div>
 @endsection
 
 @section('scripts')
