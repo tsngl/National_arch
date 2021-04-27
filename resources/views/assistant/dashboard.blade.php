@@ -15,16 +15,6 @@
                 .w-10p{
                   width: 10% !important;
                 }
-                .pagination {
-                  display: inline-block;
-                }
-
-                .pagination a {
-                  color: black;
-                  float: left;
-                  padding: 8px 16px;
-                  text-decoration: none;
-                }
               </style>
               <div id="notifDiv"></div>
               <div class="card-body">
@@ -74,16 +64,17 @@
                       @endforeach
                     </tbody>
                   </table>
-                    <input type="submit" class="btn btn-warning btn-sm save_btn float-right" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
+                    <input type="submit" class="btn btn-warning btn-sm save_btn" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
                 </div>
+                    <div class="clearfix pagination float-right">
+                        {{$athletes->links("pagination::bootstrap-4")}}
+                    </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-                    <div>
-                        {{$athletes->links()}}
-                    </div>
+                    
 @endsection
 
 @section('scripts')

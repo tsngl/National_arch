@@ -13,11 +13,12 @@ class AthletesController extends Controller
 {
     public function athlete(){
         $athletes = Athletes::all();
-        $athletes = DB::table('athletes')->paginate(3);
+        $athletes = DB::table('athletes')->paginate(5);
         return view('assistant.dashboard')->with('athletes', $athletes);
     }
     public function athletesinfo(){
         $athletes = Athletes::all();
+        $athletes = DB::table('athletes')->paginate(5);
         return view('assistant.athletes-info')->with('athletes', $athletes);
     }
     public function athletesadd(){

@@ -61,13 +61,13 @@
           </li>
           <li class="{{'athletes-info' == request()->path() ? 'active' : ''}}">
             <a href="/athletes-info">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="now-ui-icons business_badge"></i>
               <p>Тамирчдын мэдээлэл</p>
             </a>
           </li>
           <li class="{{'participant-athletes' == request()->path() ? 'active' : ''}}">
             <a href="/participant-athletes">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons business_bulb-63"></i>
               <p>Тэмцээнд оролцогчид</p>
             </a>
           </li>
