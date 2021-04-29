@@ -42,7 +42,7 @@
         <ul class="nav">
           <li class="{{'dashboard' == request()->path() ? 'active' : ''}}">
             <a href="/dashboard">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons business_bank"></i>
              <p>Хэрэглэгчийн самбар</p>
             </a>
           </li>
@@ -60,13 +60,13 @@
           </li>
           <li class="{{'users-info' == request()->path() ? 'active' : ''}}">
             <a href="/users-info">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="now-ui-icons business_badge"></i>
               <p>Хэрэглэгчидийн мэдээлэл</p>
             </a>
           </li>
-          <li class="{{'natifications' == request()->path() ? 'active' : ''}}">
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
+          <li class="{{'post' == request()->path() ? 'active' : ''}}">
+            <a href="/post">
+              <i class="now-ui-icons education_paper"></i>
               <p>Нийтлэл</p>
             </a>
           </li>

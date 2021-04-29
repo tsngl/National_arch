@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('logo')
+    <a class="navbar-brand">
+        <img class="mr-3" src="assets/img/logo.png" style=" max-width:45px" />Үндэсний сур харваа
+    </a>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 use Session;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -109,4 +110,27 @@ class DashboardController extends Controller
         return response()->json(['status'=>'Хэрэглэгчийг бүртгэлээс устагалаа']);
     }
 
+    public function post(){
+        $post = Post::all();
+        return view('admin.post')->with('post',$post);
+    }
+
+    public function postcreate(){
+        return view('admin.post-create');
+    }
+
+    public function postsave(Request $request){
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->save();
+
+        Session::flash('statuscode','success');
+        return redirect('/post')->with('status','Нийтлэл нэмэгдлээ');
+    }
+
+    public function postedit(Request $request, $id){
+        $post = Post::findOrFail($id);
+        return view('admin.post-edit')->with('post', $post);
+    }
 }
