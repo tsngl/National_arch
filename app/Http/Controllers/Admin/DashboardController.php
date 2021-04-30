@@ -9,6 +9,7 @@ use App\Models\Post;
 use Session;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -123,14 +124,33 @@ class DashboardController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->description = $request->input('description');
+        $post->status = $request->input('status');
         $post->save();
 
-        Session::flash('statuscode','success');
+        if($request->input('status') == 1){
+            
+            $posts = DB::table('post')->where('status', '1')->get();
+            //return dd($posts);
+            return view('welcome')->with('posts', $posts);
+        }else{
+            Session::flash('statuscode','success');
         return redirect('/post')->with('status','Нийтлэл нэмэгдлээ');
+        }
+
     }
 
     public function postedit(Request $request, $id){
         $post = Post::findOrFail($id);
         return view('admin.post-edit')->with('post', $post);
+    }
+
+    public function postupdate(Request $request, $id){
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->update();
+
+        Session::flash('statuscode','info');
+        return redirect('/post')->with('status','Амжилттай шинэчиллээ');
     }
 }

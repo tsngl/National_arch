@@ -41,6 +41,7 @@ End Modal -->
                     <thead class=" text-primary" style="font-style:italic">
                       <th>Гарчиг</th>
                       <th>Тайлбар</th>
+                      <th>Төлөв</th>
                       <th></th>
                       <th></th>
                     </thead>
@@ -49,6 +50,7 @@ End Modal -->
                       <tr>
                         <td>{{$item->title}}</td>
                         <td>{{$item->description}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
                             <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                         </td>

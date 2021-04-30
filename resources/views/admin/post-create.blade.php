@@ -30,6 +30,16 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Төлөв:') }}</label>
+                            <div class="col-md-6">
+                            <select class="form-control" id="status" type="text" name="status" value="old('status')" required autofocus autocomplete="status">
+                                <option>1</option>
+                                <option>0</option>
+                            </select>
+                            </div>
+                         </div>
+
 
                         <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Тайлбар:') }}</label>

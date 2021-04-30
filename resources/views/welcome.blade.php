@@ -115,6 +115,29 @@
             </div>
             </div>    
             </div>-->
+            <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">All Persons List</h5>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Тайлбар</th>
+                    </thead>
+                    <tbody>
+                    @foreach($posts as $title)
+                      <tr>
+                        <td class="text-right">{{$title->description}}</td>
+                      </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
     </div>
 
