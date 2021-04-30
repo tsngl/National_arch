@@ -13,6 +13,7 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
@@ -43,7 +44,7 @@
           <li class="{{'dashboard' == request()->path() ? 'active' : ''}}">
             <a href="/dashboard">
               <i class="now-ui-icons business_bank"></i>
-             <p>Хэрэглэгчийн самбар</p>
+             <p>Хяналтын самбар</p>
             </a>
           </li>
          <!-- <li class="{{'icons' == request()->path() ? 'active' : ''}}">
@@ -72,7 +73,7 @@
           </li>
           <li class="active-pro">
             <a href="./upgrade.html">
-              <i class="now-ui-icons education_atom"></i>
+              <i class="now-ui-icons sport_trophy"></i>
               <p>Тэмцээний явц</p>
             </a>
           </li>

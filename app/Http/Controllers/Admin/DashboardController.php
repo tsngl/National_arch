@@ -127,16 +127,14 @@ class DashboardController extends Controller
         $post->status = $request->input('status');
         $post->save();
 
-        if($request->input('status') == 1){
-            
-            $posts = DB::table('post')->where('status', '1')->get();
-            //return dd($posts);
-            return view('welcome')->with('posts', $posts);
-        }else{
-            Session::flash('statuscode','success');
+        
+        Session::flash('statuscode','success');
         return redirect('/post')->with('status','Нийтлэл нэмэгдлээ');
-        }
+    }
 
+    public function posted(){
+        $posts = DB::table('post')->where('status', '1')->get();
+        return view('welcome')->with('posts', $posts);
     }
 
     public function postedit(Request $request, $id){

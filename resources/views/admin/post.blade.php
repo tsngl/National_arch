@@ -33,7 +33,8 @@ End Modal -->
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Нийтлэл</h4>
-                <a href="/post-create" class="btn btn-warning  float-right">ШИНЭ НИЙТЛЭЛ</a>
+                <a href="/post-create" class="btn btn-warning  float-right"><i class="fa fa-plus" style="font-size:15px"></i> НЭМЭХ</a>
+                <a href="/posted" class="btn btn-warning float-right"><i class="fa fa-home" style="font-size:15px"></i></a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -52,10 +53,10 @@ End Modal -->
                         <td>{{$item->description}}</td>
                         <td>{{$item->status}}</td>
                         <td>
-                            <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                            <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90" style="font-size:15px"></i></a>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                        <button type="button" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></button>
                         </td>
                       </tr>
                    @endforeach

@@ -33,7 +33,7 @@ End Modal -->
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Хэрэглэгчид</h4>
-                <a href="/register-create" class="btn btn-warning  float-right">ШИНЭ ХЭРЭГЛЭГЧ НЭМЭХ</a>
+                <a href="/register-create" class="btn btn-warning  float-right"><i class="fa fa-user-plus" style="font-size:15px"></i> НЭМЭХ</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">

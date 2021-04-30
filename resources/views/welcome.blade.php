@@ -54,7 +54,7 @@
                         @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 sm:block">
                                 @auth
-                                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700" style="color:gray">ХЭРЭГЛЭГЧИЙН САМБАР</a>
+                                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700" style="color:gray">ХЯНАЛТЫН САМБАР</a>
                                 @else
                                     <a href="{{ route('login') }}" class="text-sm text-gray-700" style="color:gray">НЭВТРЭХ</a>
 
@@ -124,7 +124,9 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Тайлбар</th>
+                    @foreach($posts as $title)
+                      <th>{{$title->title}}</th>
+                    @endforeach
                     </thead>
                     <tbody>
                     @foreach($posts as $title)
