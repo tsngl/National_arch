@@ -56,7 +56,7 @@ End Modal -->
                             <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90" style="font-size:15px"></i></a>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></button>
+                        <a href="/change-status/{{$item->id}}" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></a>
                         </td>
                       </tr>
                    @endforeach
@@ -70,74 +70,4 @@ End Modal -->
 @endsection
 
 @section('scripts')
-   <script>
-    $(document).ready(function() {
-        $('#datatable').DataTable();
-
-    });
-  </script>
-
- <!-- <script>
-     $(document).ready(function() {
-        $('.delete_btn').click(function (e){
-              e.preventDefault();
-              
-              var delete_id = $(this).closest("tr").find('.delete_val_id').val();
-              //alert(delete_id);
-
-              $('#delete-user-id').val(delete_id);  
-              $('#delete_model').attr('action','/user-info-delete/'+delete_id);
-              $('#deleteModal').modal('show');
-        });
-     });
-  </script>-->
-  <script>
-        $(document).ready(function(){
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('.delete_btn').click(function (e){
-                e.preventDefault();
-                
-                var delete_id = $(this).closest("tr").find('.delete_val_id').val();
-                //alert(delete_id);
-
-                swal({
-                    title: "Итгэлтэй байна уу?",
-                    text: "Хэрэглэгчийн мэдээллийг бүртгэлээс устгах гэж байна",
-                    icon: "warning",
-                    buttons: ["Үгүй", "Тийм"],
-                    dangerMode: true,
-                    })
-                .then((willDelete) => {
-                    if (willDelete) {
-
-                        var data = {
-                            "_token" : $('input[name="csrf-token"]').val(),
-                            "id": delete_id,
-                        };
-
-                        $.ajax({
-                            type: "DELETE",
-                            url: "/user-info-delete/"+delete_id,
-                            data: data,
-                            success: function(response){
-                                swal(response.status, {
-                                        icon: "success",
-                                        })
-                                .then((result) => {
-                                        location.reload();
-                                        });
-                            }
-                        });
-                    }
-
-                    });
-            });
-        });
-    </script>
 @endsection('scripts')

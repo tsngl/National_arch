@@ -148,7 +148,22 @@ class DashboardController extends Controller
         $post->description = $request->input('description');
         $post->update();
 
-        Session::flash('statuscode','info');
+        Session::flash('statuscode','success');
         return redirect('/post')->with('status','Амжилттай шинэчиллээ');
+    }
+
+    public function changestatus(Request $request, $id){
+        $post = Post::findOrFail($id);
+
+        if($post->status == 1){
+            $post->status = 0;
+            $post->update();
+
+        Session::flash('statuscode','success');
+        return redirect('/post')->with('status','Амжилттай устгалаа');
+        }else{
+            Session::flash('statuscode','info');
+        return redirect('/post')->with('status','Нийтлэл устгагдсан');
+        }
     }
 }

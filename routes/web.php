@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::get('/post-edit/{id}','Admin\DashboardController@postedit');
     Route::put('/post-update/{id}','Admin\DashboardController@postupdate');
     Route::get('/posted','Admin\DashboardController@posted');
+    Route::get('/change-status/{id}','Admin\DashboardController@changestatus');
 });
 
 Route::group(['middleware' => ['auth','assistant']], function(){
