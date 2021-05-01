@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\UserArchive;
 use Session;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -104,8 +105,20 @@ class DashboardController extends Controller
 
     public function userdelete($id){
         $users = User::findOrFail($id);
-        $users->delete();
 
+        $archived = new UserArchive;
+        $archived->last_name = $users->last_name;
+        $archived->first_name = $users->first_name;
+        $archived->skill = $users->skill;
+        $archived->undsen_zahirgaa = $users->undsen_zahirgaa;
+        $archived->club = $users->club;
+        $archived->phone = $users->phone;
+        $archived->user_type = $users->user_type;
+        $archived->email = $users->email;
+        $archived->password = $users->password;
+        $archived->save();
+        
+        $users->delete();
         // Session::flash('statuscode','success');
         // return redirect('/users-info')->with('status','Амжилттай устагалаа');
         return response()->json(['status'=>'Хэрэглэгчийг бүртгэлээс устагалаа']);
