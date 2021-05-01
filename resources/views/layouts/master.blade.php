@@ -47,12 +47,6 @@
              <p>Хяналтын самбар</p>
             </a>
           </li>
-         <!-- <li class="{{'icons' == request()->path() ? 'active' : ''}}">
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>-->
           <li class="{{'role-registered' == request()->path() ? 'active' : ''}}">
             <a href="/role-registered">
               <i class="now-ui-icons users_single-02"></i> 
@@ -63,6 +57,12 @@
             <a href="/users-info">
               <i class="now-ui-icons business_badge"></i>
               <p>Хэрэглэгчидийн мэдээлэл</p>
+            </a>
+          </li>
+          <li class="{{'users-archived' == request()->path() ? 'active' : ''}}">
+            <a href="/users-archived">
+              <i class="now-ui-icons files_single-copy-04"></i>
+              <p>Архив</p>
             </a>
           </li>
           <li class="{{'post' == request()->path() ? 'active' : ''}}">

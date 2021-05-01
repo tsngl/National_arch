@@ -39,6 +39,9 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::put('/user-info-update/{id}','Admin\DashboardController@userupdate');
     Route::delete('/user-info-delete/{id}','Admin\DashboardController@userdelete');
 
+    Route::get('/users-archived','Admin\DashboardController@archived');
+    Route::get('/user-restore/{id}','Admin\DashboardController@restore');
+
     Route::get('/post','Admin\DashboardController@post');
     Route::get('/post-create','Admin\DashboardController@postcreate');
     Route::post('/save-post','Admin\DashboardController@postsave');
@@ -56,9 +59,12 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/athlete-edit/{id}','Assistant\AthletesController@athletesedit');
     Route::put('/athletes-update/{id}','Assistant\AthletesController@athletesupdate');
     Route::delete('/athlete-delete/{id}','Assistant\AthletesController@athletesdelete');
+
+    Route::get('/athlete-archived','Assistant\AthletesController@archive');
+    Route::get('/athlete-restore/{id}','Assistant\AthletesController@restore');
+
     Route::post('/participate','Assistant\AthletesController@participate')->name('participate.athletes');
     Route::get('/search', 'Assistant\AthletesController@search');
-
     Route::get('/participant-athletes','Assistant\AthletesController@participantAthletes');
     Route::delete('/participate-delete', 'Assistant\AthletesController@participantDelete')->name('deleteSelected');
 });

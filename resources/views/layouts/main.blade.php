@@ -65,6 +65,12 @@
               <p>Тамирчдын мэдээлэл</p>
             </a>
           </li>
+          <li class="{{'athlete-archived' == request()->path() ? 'active' : ''}}">
+            <a href="/athlete-archived">
+              <i class="now-ui-icons files_single-copy-04"></i>
+              <p>Архив</p>
+            </a>
+          </li>
           <li class="{{'participant-athletes' == request()->path() ? 'active' : ''}}">
             <a href="/participant-athletes">
               <i class="now-ui-icons business_bulb-63"></i>

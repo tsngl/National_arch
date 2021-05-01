@@ -61,18 +61,6 @@ class DashboardController extends Controller
         $newUser->password =Hash::make($request->input('password'));
         $newUser->save();
 
-        /*$request->user()->fill([
-            'last_name'=> ($request->last_name),
-            'first_name' => ($request->first_name),
-            'skill' => ($request->skill),
-            'undsen_zahirgaa' => ($request->undsen_zahirgaa),
-            'club' => ($request->club),
-            'phone' => ($request->phone),
-            'user_type' => ($request->user_type),
-            'email' => ($request->email),
-            'password' => Crypt::encryptString($request->password),
-        ])->save();*/
-
         Session::flash('statuscode','success');
         return redirect('/users-info')->with('status','Шинэ хэрэглэгч амжилттай бүртгэгдлээ');
     }
@@ -119,9 +107,32 @@ class DashboardController extends Controller
         $archived->save();
         
         $users->delete();
-        // Session::flash('statuscode','success');
-        // return redirect('/users-info')->with('status','Амжилттай устагалаа');
         return response()->json(['status'=>'Хэрэглэгчийг бүртгэлээс устагалаа']);
+    }
+
+    public function archived(){
+        $archived = UserArchive::all();
+        return view('admin.archived-user')->with('archived', $archived);
+    }
+
+    public function restore($id){
+        $archived = UserArchive::findOrFail($id);
+
+        $user = new User;
+        $user->last_name = $archived->last_name;
+        $user->first_name = $archived->first_name;
+        $user->skill = $archived->skill;
+        $user->undsen_zahirgaa = $archived->undsen_zahirgaa;
+        $user->club = $archived->club;
+        $user->phone = $archived->phone;
+        $user->user_type = $archived->user_type;
+        $user->email = $archived->email;
+        $user->password = $archived->password;
+        $user->save();
+        
+        $archived->delete();
+        Session::flash('statuscode','success');
+        return redirect('/users-archived')->with('status','Амжилттай сэргээгдлээ');
     }
 
     public function post(){

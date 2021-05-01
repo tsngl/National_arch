@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Athletes;
 use App\Models\Participate;
+use App\Models\AthleteArchive;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -60,9 +61,42 @@ class AthletesController extends Controller
     }
     public function athletesdelete($id){
         $athletes = Athletes::findOrFail($id);
-        $athletes->delete();
 
+        $archived = new AthleteArchive;
+        $archived->last_name = $athletes->last_name;
+        $archived->first_name = $athletes->first_name;
+        $archived->gender = $athletes->gender;
+        $archived->skill = $athletes->skill;
+        $archived->undsen_zahirgaa = $athletes->undsen_zahirgaa;
+        $archived->club = $athletes->club;
+        $archived->phone = $athletes->phone;
+        $archived->save();
+
+        $athletes->delete();
         return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
+    }
+
+    public function archive(){
+        $archived = AthleteArchive::all();
+        return view('assistant.archived-athlete')->with('archived',$archived);
+    }
+
+    public function restore($id){
+        $archive = AthleteArchive::findOrFail($id);
+
+        $athlete = new Athletes;
+        $athlete->last_name = $archive->last_name;
+        $athlete->first_name = $archive->first_name;
+        $athlete->gender = $archive->gender;
+        $athlete->skill = $archive->skill;
+        $athlete->undsen_zahirgaa = $archive->undsen_zahirgaa;
+        $athlete->club = $archive->club;
+        $athlete->phone = $archive->phone;
+        $athlete->save();
+
+        $archive->delete();
+        Session::flash('statuscode','success');
+        return redirect('/athlete-archived')->with('status','Амжилттай сэргээгдлээ');
     }
 
     public function participate(Request $request){
