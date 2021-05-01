@@ -42,6 +42,9 @@
                     </tbody>
                   </table>
                 </div>
+                    <div class="clearfix pagination float-right">
+                        {{$participant->links("pagination::bootstrap-4")}}
+                    </div>
                 </form>
               </div>
             </div>

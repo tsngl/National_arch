@@ -18,7 +18,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/now-ui-dashboard.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--<link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">-->
 </head>
@@ -47,13 +47,13 @@
           </li>-->
           <li class="{{'judge' == request()->path() ? 'active' : ''}}">
             <a href="/judge">
-              <i class="now-ui-icons users_single-02"></i> 
+              <i class="fa fa-group"></i> 
               <p>Тамирчид</p>
             </a>
           </li>
           <li class="{{'scoreboard' == request()->path() ? 'active' : ''}}">
             <a href="/scoreboard">
-              <i class="now-ui-icons design_bullet-list-67"></i>
+              <i class="now-ui-icons education_paper"></i>
               <p>Онооны самбар</p>
             </a>
           </li>
@@ -65,7 +65,7 @@
           </li>-->
           <li class="active-pro">
             <a href="./upgrade.html">
-              <i class="now-ui-icons education_atom"></i>
+              <i class="now-ui-icons sport_trophy"></i>
               <p>Тэмцээний явц</p>
             </a>
           </li>

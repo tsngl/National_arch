@@ -64,7 +64,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                    <input type="submit" class="btn btn-warning btn-sm save_btn" value="ТЭМЦЭЭНД БҮРТГЭХ"/>
+                    <input type="submit" class="btn btn-warning btn-sm save_btn" value="БҮРТГЭХ"/>
                 </div>
                     <div class="clearfix pagination float-right">
                         {{$athletes->links("pagination::bootstrap-4")}}

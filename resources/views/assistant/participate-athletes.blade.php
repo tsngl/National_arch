@@ -17,6 +17,8 @@
                 }
               </style>
               <div class="card-body">
+              <button type="button" id="selectedAll" class="btn btn-warning btn-sm float-right"><i class="fa fa-refresh"></i> ШИНЭЧЛЭХ</button>
+              <button type="button" class="btn btn-warning btn-sm float-right"><i class="fa fa-cloud-upload"></i> АРХИВЛАХ</button>
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
@@ -54,7 +56,6 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <button type="button" id="selectedAll" class="btn btn-warning btn-sm float-right">ТЭМЦЭЭНД ОРОЛЦОГЧДЫГ ШИНЭЧЛЭХ</button>
                 </div>
                 </form>
               </div>
