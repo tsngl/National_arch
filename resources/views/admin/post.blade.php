@@ -5,29 +5,6 @@
 @endsection
 
 @section('content')
-<!-- Modal 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" style="text-align:center">Анхаар!</h5>
-      </div>
-      <form id="delete_model" method="POST" >
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}  
-      <div class="modal-body">
-          <input type="hidden" id="delete-user-id">
-          <h5  style="text-align:center">Устгах гэж байна. Итгэлтэй байна уу?</h5>
-      </div>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Үгүй</button>
-        <button type="submit" class="btn btn-primary mr-4">Тийм</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-End Modal -->
 <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -38,7 +15,7 @@ End Modal -->
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="datatable" class="table">
+                  <table id="datatable" class="table table-hover">
                     <thead class=" text-primary" style="font-style:italic">
                       <th>Гарчиг</th>
                       <th>Тайлбар</th>
@@ -51,7 +28,7 @@ End Modal -->
                       <tr>
                         <td>{{$item->title}}</td>
                         <td>{{$item->description}}</td>
-                        <td>{{$item->status}}</td>
+                        <td class="text-center">{{$item->status}}</td>
                         <td>
                             <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90" style="font-size:15px"></i></a>
                         </td>
@@ -63,6 +40,9 @@ End Modal -->
                     </tbody>
                   </table>
                 </div>
+                    <div class="clearfix pagination float-right">
+                        {{$post->links("pagination::bootstrap-4")}}
+                    </div>
               </div>
             </div>
           </div>

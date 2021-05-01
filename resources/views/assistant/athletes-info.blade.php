@@ -10,7 +10,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Тамирчдын мэдээлэл</h4>
-                <a href="/add-athletes" class="btn btn-warning  float-right">ТАМИРЧИН НЭМЭХ</a>
+                <a href="/add-athletes" class="btn btn-warning  float-right"><i class="fa fa-user-plus" style="font-size:15px"></i> ТАМИРЧИН НЭМЭХ</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">

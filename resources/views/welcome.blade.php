@@ -69,75 +69,27 @@
             </div>
         </nav>
         <main class="py-4 container">
-        <!--<div class="row ">
-            <div class="card text-white bg-primary mb-3 col-md-4" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3 col-md-4 ml-auto" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>
-            <div class="card text-white bg-success mb-3 col-md-4 ml-auto " style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Success card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="card text-white bg-danger mb-3 col-md-4" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Danger card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>
-            <div class="card text-white bg-warning mb-3 col-md-4 ml-auto" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Warning card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>
-            <div class="card text-white bg-info mb-3 col-md-4 ml-auto" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Info card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            </div>    
-            </div>-->
+       
             <div class="col-md-6">
+            <div class="card-header"><h5>Зарлал</h5></div>
+            @foreach($posts as $title)
             <div class="card">
-              <div class="card-header">
-                <h5 class="card-category">All Persons List</h5>
-              </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                    @foreach($posts as $title)
-                      <th>{{$title->title}}</th>
-                    @endforeach
-                    </thead>
-                    <tbody>
-                    @foreach($posts as $title)
-                      <tr>
-                        <td class="text-right">{{$title->description}}</td>
-                      </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                </div>
+                <div class="panel-heading">
+                    <div class="text-center">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h3 class="float-left"><i>{{$title->title}}</i></h3>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="panel-body">{{$title->description}}<a href="#">Дэлгэрэнгүй</a></div>
               </div>
+                  <div class="card-footer">
+                      <footer class="blockquote-footer float-right"><cite title="Source Title">{{$title->created_at}}</cite></footer>
+                  </div>
+              @endforeach
             </div>
           </div>
         </main>
@@ -150,6 +102,6 @@
     © 2021 Copyright:
     <a class="text-dark" href="">Монголын үндэсний сур харваа</a>
   </div>
-  <!-- Copyright -->
+   <!--Copyright -->
 </footer>
 </html>

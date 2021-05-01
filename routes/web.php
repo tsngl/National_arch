@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts = DB::table('post')->where('status', '1')->get();
+    
+        return view('welcome')->with('posts', $posts);
 });
 
 Auth::routes();

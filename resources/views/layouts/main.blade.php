@@ -55,7 +55,7 @@
           </li>-->
           <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
             <a href="/assistant">
-              <i class="now-ui-icons users_single-02"></i> 
+              <i class="fa fa-group"></i> 
               <p>Тамирчид</p>
             </a>
           </li>

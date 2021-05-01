@@ -113,6 +113,7 @@ class DashboardController extends Controller
 
     public function post(){
         $post = Post::all();
+        $post = DB::table('post')->paginate(5);
         return view('admin.post')->with('post',$post);
     }
 
