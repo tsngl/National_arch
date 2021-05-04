@@ -19,4 +19,8 @@ class Athletes extends Model
         'club',
         'phone',
     ];
+
+    public function competitions(){
+        return $this->belongsToMany(Competition::class);
+    }
 }

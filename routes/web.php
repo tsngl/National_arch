@@ -19,6 +19,20 @@ Route::get('/', function () {
         return view('welcome')->with('posts', $posts);
 });
 
+Route::get('/relationship', function () {
+    
+    $athlete = \App\Models\Athletes::first();
+
+    $competition = \App\Models\Competition::all();
+
+    //$competition->athletes()->attach($athlete);
+
+    $athlete->competitions()->attach($competition);
+
+    //dd($athlete);
+
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
