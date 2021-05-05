@@ -9,6 +9,16 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
+              <div class="row">
+                <div class="col-4">
+                            <select class="form-control" id="user_type" type="text" name="user_type" value="old('user_type')" required autofocus autocomplete="user_type">
+                                <option>Тэмцээнээ сонгоно уу</option>
+                            @foreach($comp as $item)
+                                <option>{{$item->competition_name}}</option>
+                            @endforeach
+                            </select>   
+                </div>
+              </div>
                 <h4 class="card-title">Тамирчид</h4>
               </div>
               <style>
@@ -18,6 +28,7 @@
               </style>
               <div id="notifDiv"></div>
               <div class="card-body">
+
                
                 <div class="col-md-12 mb-4">
                   <form class="form-inline md-form form-sm mt-0" type="get" action="/search">
@@ -25,7 +36,7 @@
                     <button class="btn btn-warning btn-rounded rounded-pill btn-sm my-0 waves-effect waves-light" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                   </form>
                 </div>
-            
+
               <form> 
                 <div class="table-responsive">
                   <table class="table">

@@ -26,10 +26,7 @@ Route::get('/relationship', function () {
     $competition = \App\Models\Competition::all();
 
     //$competition->athletes()->attach($athlete);
-
     $athlete->competitions()->attach($competition);
-
-    //dd($athlete);
 
 });
 
@@ -81,6 +78,11 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/search', 'Assistant\AthletesController@search');
     Route::get('/participant-athletes','Assistant\AthletesController@participantAthletes');
     Route::delete('/participate-delete', 'Assistant\AthletesController@participantDelete')->name('deleteSelected');
+
+    Route::get('/competition','Assistant\AthletesController@competition');
+    Route::post('/save-comp','Assistant\AthletesController@competitionsave');
+    Route::get('/comp-edit/{id}','Assistant\AthletesController@competitionedit');
+    Route::put('/comp-update/{id}','Assistant\AthletesController@competitionupdate');
 });
 
 Route::group(['middleware' => ['auth','judge']], function(){

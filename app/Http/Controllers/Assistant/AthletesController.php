@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Athletes;
 use App\Models\Participate;
 use App\Models\AthleteArchive;
+use App\Models\Competition;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,8 @@ class AthletesController extends Controller
     public function athlete(){
         $athletes = Athletes::all();
         $athletes = DB::table('athletes')->paginate(5);
-        return view('assistant.dashboard')->with('athletes', $athletes);
+        $comp = Competition::all();
+        return view('assistant.dashboard', compact('athletes', 'comp'));
     }
     public function athletesinfo(){
         $athletes = Athletes::all();
@@ -133,5 +135,34 @@ class AthletesController extends Controller
         $athletes = Athletes::where('first_name', 'LIKE', '%'.$search_text.'%')->get();
         
         return view('assistant.search',compact('athletes'));
+    }
+
+    public function competition(){
+        $comp = Competition::all();
+        $comp = DB::table('competition')->paginate(5);
+        return view('assistant.competition')->with('comp',$comp);
+    }
+
+    public function competitionsave(Request $request){
+        $comp = new Competition;
+        $comp->competition_name = $request->competition_name;
+        $comp->rank = $request->rank;
+        $comp->save();
+
+        return redirect('/competition');
+    }
+
+    public function competitionedit($id){
+         $competition = Competition::findOrFail($id);
+         return view('assistant.competition-edit')->with('competition', $competition);
+    }
+
+    public function competitionupdate(Request $request, $id){
+        $comp = Competition::find($id);
+        $comp->competition_name = $request->input('competition_name');
+        $comp->rank = $request->input('rank');
+        $comp->update();
+
+        return redirect('/competition');
     }
 }
