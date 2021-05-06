@@ -10,11 +10,11 @@
             <div class="card">
               <div class="card-header">
               <div class="row">
-                <div class="col-4">
-                            <select class="form-control" id="user_type" type="text" name="user_type" value="old('user_type')" required autofocus autocomplete="user_type">
+                <div class="col-4 center">
+                            <select class="form-control"  type="text" name="comp_name" value="old('user_type')" required autofocus autocomplete="user_type">
                                 <option>Тэмцээнээ сонгоно уу</option>
                             @foreach($comp as $item)
-                                <option>{{$item->competition_name}}</option>
+                                <option data-id="{{$item->id}}" >{{$item->competition_name}}</option>
                             @endforeach
                             </select>   
                 </div>
@@ -76,6 +76,7 @@
                     </tbody>
                   </table>
                     <input type="submit" class="btn btn-warning btn-sm save_btn" value="БҮРТГЭХ"/>
+                    <button class="btn btn-warning btn-sm save_btn_pivot">Б</button>
                 </div>
                     <div class="clearfix pagination float-right">
                         {{$athletes->links("pagination::bootstrap-4")}}
@@ -89,19 +90,6 @@
 @endsection
 
 @section('scripts')
-<!--<script type="text/javascript">
-      $('.checked_all').on('change', function() {     
-                $('.checkbox').prop('checked', $(this).prop("checked"));              
-        });
-        //deselect "checked all", if one of the listed checkbox product is unchecked amd select "checked all" if all of the listed checkbox product is checked
-        $('.checkbox').change(function(){ //".checkbox" change 
-            if($('.checkbox:checked').length == $('.checkbox').length){
-                   $('.checked_all').prop('checked',true);
-            }else{
-                   $('.checked_all').prop('checked',false);
-            }
-        });
-</script>-->
 <script>
   $(document).ready(function(){
 
@@ -173,5 +161,56 @@
       });
       
   });
+</script>
+<script>
+$(document).ready(function(){  
+
+      $('.save_btn_pivot').on('click', function(e){
+          e.preventDefault(); 
+
+            const id = [];
+            const value = [];
+
+            $('.athlete-id').each(function(){
+              if($(this).is(":checked")){
+                id.push($(this).val());
+              }
+            });
+            
+            $('select').each(function(){
+              value.push($(this).children('option:selected').data('id'));
+            }); 
+            console.log(value);
+
+            $.ajax({
+              url: '{{route('pivot.table')}}',
+              type: 'POST',
+              data: {
+                  "_token" : "{{csrf_token()}}",
+                  id : id,
+                  value : value,
+              },
+              success: function(response){
+                  if(response.status){
+                        swal({
+                            title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
+                            icon: 'success',
+                            button: "ОК",
+                          });
+                        $('input[type="checkbox"]').prop('checked',false);
+                  } else{
+                    console.log('error');
+                  }
+              },
+              error: function(response){
+                console.log('error');
+              }
+          });
+
+         
+      });
+
+});
+ 
 </script>
 @endsection

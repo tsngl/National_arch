@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::post('/save-comp','Assistant\AthletesController@competitionsave');
     Route::get('/comp-edit/{id}','Assistant\AthletesController@competitionedit');
     Route::put('/comp-update/{id}','Assistant\AthletesController@competitionupdate');
+    Route::post('/pivot','Assistant\AthletesController@pivot')->name('pivot.table');
 });
 
 Route::group(['middleware' => ['auth','judge']], function(){

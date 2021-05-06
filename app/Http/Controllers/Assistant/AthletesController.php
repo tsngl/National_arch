@@ -165,4 +165,18 @@ class AthletesController extends Controller
 
         return redirect('/competition');
     }
+
+    public function pivot(Request $request){
+       
+       // $athlete->competitions()->attach($competition);
+
+       foreach($request->id as $key => $value){
+        $athlete = Athletes::where('id', $request->id[$key])->get();
+        $competition = Competition::findOrFail($request->value[0]);
+       
+        $competition->athletes()->attach($athlete);
+    }
+
+        return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
+    }
 }
