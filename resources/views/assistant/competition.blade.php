@@ -59,7 +59,6 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Тэмцээн</h4>
                 <!--<a href="/add-competition" class="btn btn-warning  float-right">НЭМЭХ</a>-->
                 <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">НЭМЭХ</button>
               </div>
@@ -70,7 +69,7 @@
                       <th></th>
                       <th>Тэмцээний нэр</th>
                       <th>Чансаа</th>
-                      <th></th>
+                      <th class="text-right"></th>
                     </thead>
                     <tbody>
                     @foreach($comp as $competition)
@@ -78,8 +77,9 @@
                         <td>{{$competition->id}}</td>
                         <td>{{$competition->competition_name}}</td>
                         <td>{{$competition->rank}}</td>
-                        <td>
+                        <td class="text-right">
                             <a href="/comp-edit/{{$competition->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                            <a href="/comp-details/{{$competition->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="fa fa-eye"></i></a>
                         </td>
                       </tr>
                     @endforeach

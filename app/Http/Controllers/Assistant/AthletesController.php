@@ -168,4 +168,13 @@ class AthletesController extends Controller
 
         return redirect('/competition');
     }
+
+    public function competitionDetail(Request $request, $id){
+        $comp = Competition::find($id);
+        $athletes= DB::table('athletes')
+                ->join('athletes_competition','athletes_competition.athletes_id','=','athletes.id')
+                ->where('athletes_competition.competition_id', $comp->id)
+                ->get();
+        return view('assistant.competition-detail', compact('athletes', 'comp'));
+    }
 }

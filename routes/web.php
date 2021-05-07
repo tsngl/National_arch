@@ -83,9 +83,10 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::post('/save-comp','Assistant\AthletesController@competitionsave');
     Route::get('/comp-edit/{id}','Assistant\AthletesController@competitionedit');
     Route::put('/comp-update/{id}','Assistant\AthletesController@competitionupdate');
+    Route::get('/comp-details/{id}','Assistant\AthletesController@competitionDetail');
 });
-
 Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/judge', 'Judge\JudgeController@viewathletes');
+
     Route::get('/scoreboard','Judge\JudgeController@scoreboard');
 });

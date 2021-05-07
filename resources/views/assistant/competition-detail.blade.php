@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.main')
 
 @section('title')
     Үндэсний сур харваа
@@ -10,8 +10,8 @@
             <div class="card">
               <div class="card-header">
               <div class="row">
-                <h4 class="card-title">Тамирчид</h4>
-              </div>
+                <h4 class="card-title center" style="text-align:center">{{$comp->competition_name}}</h4>
+              </div><hr>
               <style>
                 .w-10p{
                   width: 10% !important;
@@ -53,43 +53,4 @@
 @endsection
 
 @section('scripts')
-<!--<script>
-  $(document).ready(function(){
-
-      $('.select_btn').on('click', function(e){
-          e.preventDefault();
-          const value = [];
-
-          $('select').each(function(){
-              value.push($(this).children('option:selected').data('id'));
-          }); 
-          console.log(value);
-          $.ajax({
-              url: '/selected-comp',
-              type: 'POST',
-              data: {
-                  "_token" : "{{csrf_token()}}",
-                  value : value
-              },
-              success: function(response){
-                  if(response.status){
-                        swal({
-                            title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
-                            icon: 'success',
-                            button: "ОК",
-                          });
-                        $('input[type="checkbox"]').prop('checked',false);
-                  } else{
-                    console.log('error');
-                  }
-              },
-              error: function(response){
-                console.log('error');
-              }
-          });
-
-      });
-      
-  });
-</script>-->
 @endsection

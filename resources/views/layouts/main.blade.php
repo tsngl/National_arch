@@ -83,7 +83,25 @@
               <p>Тэмцээнд оролцогчид</p>
             </a>
           </li>
-          <!--<li class="active-pro">
+          <!--<li>
+              <a data-toggle="collapse" href="#pagesExamples" class="" aria-expanded="true">
+                  <i class="now-ui-icons design_image"></i>
+                        <p>
+                          Тэмцээний дэлгэрэнгүй<b class="caret"></b>
+                        </p>
+             </a>
+
+                    <div class="collapse show" id="pagesExamples" style="">
+                        <ul class="nav">
+                          <li>
+                              <a href="../examples/pages/rtl.html">
+                                  <span class="sidebar-normal">{{ Auth::user()->user_type}}</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+          <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons education_atom"></i>
               <p>Тэмцээний явц</p>
