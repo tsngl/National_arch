@@ -30,21 +30,18 @@
                       <th>Харъяа клуб</th>
                     </thead>
                     <tbody>
-                    @foreach($participant as $part)
+                    @foreach($participant as $pivotTable)
                       <tr>
-                        <td class="ml-5 pl-5">{{$part->last_name}}</td>
-                        <td>{{$part->first_name}}</td>
-                        <td>{{$part->gender}}</td>
-                        <td>{{$part->skill}}</td>
-                        <td>{{$part->club}}</td>
+                        <td class="ml-5 pl-5">{{$pivotTable->last_name}}</td>
+                        <td>{{$pivotTable->first_name}}</td>
+                        <td>{{$pivotTable->gender}}</td>
+                        <td>{{$pivotTable->skill}}</td>
+                        <td>{{$pivotTable->club}}</td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
                 </div>
-                    <div class="clearfix pagination float-right">
-                        {{$participant->links("pagination::bootstrap-4")}}
-                    </div>
                 </form>
               </div>
             </div>

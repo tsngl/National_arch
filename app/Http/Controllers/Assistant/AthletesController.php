@@ -15,7 +15,7 @@ class AthletesController extends Controller
 {
     public function athlete(){
         $athletes = Athletes::all();
-        $athletes = DB::table('athletes')->paginate(5);
+        $athletes = DB::table('athletes')->paginate(10);
         $comp = Competition::all();
         return view('assistant.dashboard', compact('athletes', 'comp'));
     }
@@ -103,21 +103,24 @@ class AthletesController extends Controller
 
     public function participate(Request $request){
         $checked_array = $request->id;
-        foreach($request->id as $key => $value){
-            if(in_array($request->id[$key], $checked_array)){
-                $participant = new Participate;
-                $participant->last_name = $request->last_name[$key];
-                $participant->first_name = $request->first_name[$key];
-                $participant->gender = $request->gender[$key];
-                $participant->skill = $request->skill[$key];
-                $participant->club = $request->club[$key];
-                $participant->save();
+            foreach($request->id as $key => $value){
+                $athlete = Athletes::where('id', $request->id[$key])->get();
+                $competition = Competition::findOrFail($request->value[0]);
+                $competition->athletes()->attach($athlete);
+            
+                if(in_array($request->id[$key], $checked_array)){
+                    $participant = new Participate;
+                    $participant->last_name = $request->last_name[$key];
+                    $participant->first_name = $request->first_name[$key];
+                    $participant->gender = $request->gender[$key];
+                    $participant->skill = $request->skill[$key];
+                    $participant->club = $request->club[$key];
+                    $participant->save();
+                }
             }
+            return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
         }
-
-        return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
-       
-    }
+    
 
     public function participantAthletes(){
         $participant = Participate::all();
@@ -164,19 +167,5 @@ class AthletesController extends Controller
         $comp->update();
 
         return redirect('/competition');
-    }
-
-    public function pivot(Request $request){
-       
-       // $athlete->competitions()->attach($competition);
-
-       foreach($request->id as $key => $value){
-        $athlete = Athletes::where('id', $request->id[$key])->get();
-        $competition = Competition::findOrFail($request->value[0]);
-       
-        $competition->athletes()->attach($athlete);
-    }
-
-        return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
     }
 }

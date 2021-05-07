@@ -16,6 +16,6 @@ class Competition extends Model
     ];
 
     public function athletes(){
-        return $this->belongsToMany(Athletes::class);
+        return $this->belongsToMany(Athletes::class)->withTimestamps();
     }
 }

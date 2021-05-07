@@ -11,7 +11,7 @@
               <div class="card-header">
               <div class="row">
                 <div class="col-4 center">
-                            <select class="form-control"  type="text" name="comp_name" value="old('user_type')" required autofocus autocomplete="user_type">
+                            <select class="form-control"  type="text" name="comp_name">
                                 <option>Тэмцээнээ сонгоно уу</option>
                             @foreach($comp as $item)
                                 <option data-id="{{$item->id}}" >{{$item->competition_name}}</option>
@@ -76,7 +76,6 @@
                     </tbody>
                   </table>
                     <input type="submit" class="btn btn-warning btn-sm save_btn" value="БҮРТГЭХ"/>
-                    <button class="btn btn-warning btn-sm save_btn_pivot">Б</button>
                 </div>
                     <div class="clearfix pagination float-right">
                         {{$athletes->links("pagination::bootstrap-4")}}
@@ -102,12 +101,17 @@
           const gender = [];
           const skill = [];
           const club = [];
+          const value = [];
 
           $('.athlete-id').each(function(){
               if($(this).is(":checked")){
                 id.push($(this).val());
               }
           });
+
+          $('select').each(function(){
+              value.push($(this).children('option:selected').data('id'));
+          }); 
 
           $('input[name^="last_name"]').each(function(){
               last_name.push($(this).val());
@@ -139,7 +143,8 @@
                   first_name : first_name,
                   gender : gender,
                   skill : skill,
-                  club : club
+                  club : club,
+                  value : value
               },
               success: function(response){
                   if(response.status){
@@ -161,56 +166,5 @@
       });
       
   });
-</script>
-<script>
-$(document).ready(function(){  
-
-      $('.save_btn_pivot').on('click', function(e){
-          e.preventDefault(); 
-
-            const id = [];
-            const value = [];
-
-            $('.athlete-id').each(function(){
-              if($(this).is(":checked")){
-                id.push($(this).val());
-              }
-            });
-            
-            $('select').each(function(){
-              value.push($(this).children('option:selected').data('id'));
-            }); 
-            console.log(value);
-
-            $.ajax({
-              url: '{{route('pivot.table')}}',
-              type: 'POST',
-              data: {
-                  "_token" : "{{csrf_token()}}",
-                  id : id,
-                  value : value,
-              },
-              success: function(response){
-                  if(response.status){
-                        swal({
-                            title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
-                            icon: 'success',
-                            button: "ОК",
-                          });
-                        $('input[type="checkbox"]').prop('checked',false);
-                  } else{
-                    console.log('error');
-                  }
-              },
-              error: function(response){
-                console.log('error');
-              }
-          });
-
-         
-      });
-
-});
- 
 </script>
 @endsection

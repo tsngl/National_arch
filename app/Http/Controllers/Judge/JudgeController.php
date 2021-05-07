@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Judge;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Participate;
+use App\Models\Athletes;
+use App\Models\Competition;
 use Illuminate\Support\Facades\DB;
 
 class JudgeController extends Controller
 {
     public function viewathletes(){
-        $participant = Participate::all();
-        $participant = DB::table('participate')->paginate(5);
+        $athletes_id = DB::table('athletes_competition')->pluck('athletes_id');
+        $participant = Athletes::find($athletes_id);
+        
         return view('judge.dashboard')->with('participant', $participant);
     }
 
