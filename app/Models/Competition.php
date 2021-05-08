@@ -13,6 +13,7 @@ class Competition extends Model
     protected $fillable = [
         'competition_name',
         'rank',
+        'status',
     ];
 
     public function athletes(){

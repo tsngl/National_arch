@@ -4,6 +4,10 @@
     Үндэсний сур харваа
 @endsection
 
+@section('logo')
+<img src="/assets/img/log.png"/>
+@endsection
+
 @section('content')
 <!-- Modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,6 +49,15 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Төлөв:') }}</label>
+                            <div class="col-md-6">
+                            <select class="form-control" id="status" type="text" name="status" value="old('status')" required autofocus autocomplete="status">
+                                <option>1</option>
+                                <option>0</option>
+                            </select>
+                            </div>
+                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
                             <button type="submit" class="btn btn-success">Хадгалах</button>
@@ -68,7 +81,8 @@
                     <thead class=" text-primary" style="font-style:italic">
                       <th></th>
                       <th>Тэмцээний нэр</th>
-                      <th>Чансаа</th>
+                      <th class="text-center">Чансаа</th>
+                      <th class="text-center">Төлөв</th>
                       <th class="text-right"></th>
                     </thead>
                     <tbody>
@@ -76,10 +90,12 @@
                       <tr>
                         <td>{{$competition->id}}</td>
                         <td>{{$competition->competition_name}}</td>
-                        <td>{{$competition->rank}}</td>
+                        <td class="text-center">{{$competition->rank}}</td>
+                        <td class="text-center">{{$competition->status}}</td>
                         <td class="text-right">
                             <a href="/comp-edit/{{$competition->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                            <a href="/comp-details/{{$competition->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="fa fa-eye"></i></a>
+                            <a href="/comp-details/{{$competition->id}}" class="btn btn-success btn-sm btn-outline-success btn-icon"><i class="fa fa-eye"></i></a>
+                            <a href="/comp-delete/{{$competition->id}}" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></a>
                         </td>
                       </tr>
                     @endforeach

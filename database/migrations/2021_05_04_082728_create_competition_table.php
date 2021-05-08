@@ -17,6 +17,7 @@ class CreateCompetitionTable extends Migration
             $table->id();
             $table->string('competition_name');
             $table->integer('rank');
+            $table->integer('status');
             $table->timestamps();
         });
     }

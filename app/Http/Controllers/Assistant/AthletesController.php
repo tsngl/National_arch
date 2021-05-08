@@ -16,7 +16,7 @@ class AthletesController extends Controller
     public function athlete(){
         $athletes = Athletes::all();
         $athletes = DB::table('athletes')->paginate(10);
-        $comp = Competition::all();
+        $comp = DB::table('competition')->where('status', '1')->get();
         return view('assistant.dashboard', compact('athletes', 'comp'));
     }
     public function athletesinfo(){
@@ -150,6 +150,7 @@ class AthletesController extends Controller
         $comp = new Competition;
         $comp->competition_name = $request->competition_name;
         $comp->rank = $request->rank;
+        $comp->status = $request->status;
         $comp->save();
 
         return redirect('/competition');
@@ -164,6 +165,7 @@ class AthletesController extends Controller
         $comp = Competition::find($id);
         $comp->competition_name = $request->input('competition_name');
         $comp->rank = $request->input('rank');
+        $comp->status = $request->input('status');
         $comp->update();
 
         return redirect('/competition');
@@ -174,7 +176,23 @@ class AthletesController extends Controller
         $athletes= DB::table('athletes')
                 ->join('athletes_competition','athletes_competition.athletes_id','=','athletes.id')
                 ->where('athletes_competition.competition_id', $comp->id)
+                ->orderByRaw('score DESC')
                 ->get();
         return view('assistant.competition-detail', compact('athletes', 'comp'));
+    }
+
+    public function competitionStatus(Request $request, $id){
+        $comp = Competition::findOrFail($id);
+
+        if($comp->status == 1){
+            $comp->status = 0;
+            $comp->update();
+
+        Session::flash('statuscode','success');
+        return redirect('/competition')->with('status','Амжилттай устгалаа');
+        }else{
+            Session::flash('statuscode','info');
+        return redirect('/competition')->with('status','Тэмцээн устгагдсан');
+        }
     }
 }

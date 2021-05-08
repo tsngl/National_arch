@@ -4,11 +4,16 @@
     Үндэсний сур харваа
 @endsection
 
+@section('logo')
+<img src="/assets/img/log.png"/>
+@endsection
+
 @section('content')
 <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
+              <a href="/competition" class="btn btn-info btn-sm btn-outline-info btn-icon float-right"><i class="	fa fa-mail-reply"></i></a>
               <div class="row">
                 <h4 class="card-title center" style="text-align:center">{{$comp->competition_name}}</h4>
               </div><hr>

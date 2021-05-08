@@ -33,7 +33,7 @@
                             <a href="/post-edit/{{$item->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90" style="font-size:15px"></i></a>
                         </td>
                         <td>
-                        <a href="/change-status/{{$item->id}}" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></a>
+                        <a href="/change-status/{{$item->id}}" class="btn btn-danger btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove" style="font-size:15px"></i></a>
                         </td>
                       </tr>
                    @endforeach

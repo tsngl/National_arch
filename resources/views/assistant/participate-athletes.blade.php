@@ -4,6 +4,10 @@
     Үндэсний сур харваа
 @endsection
 
+@section('logo')
+<img src="/assets/img/log.png"/>
+@endsection
+
 @section('content')
 <div class="row">
           <div class="col-md-12">

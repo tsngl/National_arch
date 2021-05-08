@@ -46,14 +46,6 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'competition' => [
-            'driver' => 'session',
-            'provider' => 'competition',
-        ],
-        'competition-api' => [
-            'driver' => 'token',
-            'provider' => 'competition',
-        ],
     ],
 
     /*
@@ -77,10 +69,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'competition' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Competition::class,
         ],
 
         // 'users' => [
