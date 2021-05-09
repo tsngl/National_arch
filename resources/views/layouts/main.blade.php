@@ -54,16 +54,16 @@
               <p>Icons</p>
             </a>
           </li>-->
-          <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
-            <a href="/assistant">
-              <i class="fa fa-group"></i> 
-              <p>Тамирчид</p>
-            </a>
-          </li>
           <li class="{{'athletes-info' == request()->path() ? 'active' : ''}}">
             <a href="/athletes-info">
-              <i class="now-ui-icons business_badge"></i>
+              <i class="fa fa-group"></i>
               <p>Тамирчдын мэдээлэл</p>
+            </a>
+          </li>
+          <li class="{{'assistant' == request()->path() ? 'active' : ''}}">
+            <a href="/assistant">
+              <i class="now-ui-icons business_badge"></i> 
+              <p>Тэмцээний бүртгэл</p>
             </a>
           </li>
           <li class="{{'competition' == request()->path() ? 'active' : ''}}">

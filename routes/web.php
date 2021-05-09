@@ -35,9 +35,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth','admin']], function(){
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('/dashboard', 'Admin\DashboardController@dashboard');
     Route::get('/role-registered','Admin\DashboardController@registered');
     Route::get('/role-edit/{id}', 'Admin\DashboardController@registeredit');
     Route::put('/role-register-update/{id}','Admin\DashboardController@registerupdate');

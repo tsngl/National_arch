@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    public function dashboard(){
+        $user = DB::table('users')->count();
+        $athletes = DB::table('athletes')->count();
+        $competition = DB::table('competition')->count();
+        $post = DB::table('post')->count();
+        return view('admin.dashboard', compact('user', 'athletes', 'competition', 'post'));
+    }
     public function registered(){
         $users = User::all();
         return view('admin.register')->with('users',$users);
