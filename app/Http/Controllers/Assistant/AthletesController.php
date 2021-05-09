@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Athletes;
 use App\Models\Participate;
 use App\Models\AthleteArchive;
+use App\Models\Skill;
 use App\Models\Competition;
 use Session;
 use Illuminate\Support\Facades\DB;
@@ -21,18 +22,21 @@ class AthletesController extends Controller
     }
     public function athletesinfo(){
         $athletes = Athletes::all();
-        $athletes = DB::table('athletes')->paginate(5);
+        $athletes = DB::table('athletes')->paginate(10);
         return view('assistant.athletes-info')->with('athletes', $athletes);
     }
     public function athletesadd(){
         return view('assistant.new-athletes');
     }
     public function store(Request $request){
+        $skill = DB::table('skill')->where('skill', $request->input('skill'))->pluck('id');
+        //dd($skill[0]);
         $newAthlete = new Athletes;
         $newAthlete->last_name = $request->input('last_name');
         $newAthlete->first_name = $request->input('first_name');
         $newAthlete->gender = $request->input('gender');
         $newAthlete->skill = $request->input('skill');
+        $newAthlete->skill_id = $skill[0];
         $newAthlete->undsen_zahirgaa = $request->input('undsen_zahirgaa');
         $newAthlete->club = $request->input('club');
         $newAthlete->phone = $request->input('phone');

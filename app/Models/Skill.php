@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     use HasFactory;
+    protected $table = 'skill';
     protected $fillable = [
         'skill',
         'rank_hierarchy',

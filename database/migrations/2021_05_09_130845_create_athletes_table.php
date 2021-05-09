@@ -19,6 +19,7 @@ class CreateAthletesTable extends Migration
             $table->string('first_name');
             $table->string('gender');
             $table->string('skill');
+            $table->integer('skill_id');
             $table->string('undsen_zahirgaa');
             $table->string('club');
             $table->string('phone');

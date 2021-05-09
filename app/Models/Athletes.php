@@ -15,6 +15,7 @@ class Athletes extends Model
         'first_name',
         'gender',
         'skill',
+        'skill_id',
         'undsen_zahirgaa',
         'club',
         'phone',
