@@ -57,12 +57,6 @@
               <p>Онооны самбар</p>
             </a>
           </li>
-          <!--<li class="{{'natifications' == request()->path() ? 'active' : ''}}">
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Тэмцээнд оролцогчид</p>
-            </a>
-          </li>-->
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons sport_trophy"></i>

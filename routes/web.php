@@ -74,8 +74,8 @@ Route::group(['middleware' => ['auth','assistant']], function(){
 
     Route::post('/participate','Assistant\AthletesController@participate')->name('participate.athletes');
     Route::get('/search', 'Assistant\AthletesController@search');
-    Route::get('/participant-athletes','Assistant\AthletesController@participantAthletes');
-    Route::delete('/participate-delete', 'Assistant\AthletesController@participantDelete')->name('deleteSelected');
+    //Route::get('/participant-athletes','Assistant\AthletesController@participantAthletes');
+   // Route::delete('/participate-delete', 'Assistant\AthletesController@participantDelete')->name('deleteSelected');
 
     Route::get('/competition','Assistant\AthletesController@competition');
     Route::post('/save-comp','Assistant\AthletesController@competitionsave');

@@ -18,7 +18,8 @@
               </style>
               <div class="card-body">
               <button type="button" id="selectedAll" class="btn btn-warning btn-sm float-right"><i class="fa fa-refresh"></i> ШИНЭЧЛЭХ</button>
-              <!--<button type="button" class="btn btn-warning btn-sm float-right"><i class="fa fa-cloud-upload"></i> АРХИВЛАХ</button>-->
+              <!--<a href="/create-board" class="btn btn-info btn-sm float-right">САМБАРТ ЗООХ</a>
+              <button type="button" class="btn btn-warning btn-sm float-right"><i class="fa fa-cloud-upload"></i> АРХИВЛАХ</button>-->
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">

@@ -38,10 +38,11 @@ class JudgeController extends Controller
                 $participant->athletes_id = $athlete->athletes_id;
                 $participant->competition_id = $athlete->competition_id;
                 $participant->rank_hierarchy = $athlete->rank_hierarchy;
-                $participant->save();
-                                    
+                $participant->save();                  
                     }
-        return redirect('/choose-competition'); 
+         //return $this->scoreboard($id);  
+         redirect('/choose-competition'); 
+
        //return redirect(route('judge',$comp->id));
     }   
 
@@ -58,7 +59,14 @@ class JudgeController extends Controller
      }
 
     public function scoreboard(){
-
-        return view('judge.scoreboard');
+        $femaleAthletes= DB::table('participate')
+                ->where('gender', 'Эм')
+                ->orderByRaw('rank_hierarchy DESC')
+                ->get();
+        $maleAthletes= DB::table('participate')
+                ->where('gender', 'Эр')
+                ->orderByRaw('rank_hierarchy DESC')
+                ->get();
+    return view('judge.scoreboard', compact('femaleAthletes','maleAthletes'));
     }
 }

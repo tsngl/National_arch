@@ -23,54 +23,47 @@
                       <th colspan="6"></th>
                     </tr>
                     <tr>
-                      <th rowspan="7" class="rotate" style="text-align:center">Merge uy</th>
+                      <th rowspan="7" class="rotate" style="text-align:center">Мэргэ</th>
                       <th>ОВОГ</th>
-                      <td>Blue</td>
-                      <td>Purple</td>
-                      <td>Purple</td>
-                      <td>Purple</td>
+                      @foreach($maleAthletes as $male)
+                      <td>{{$male->last_name}}</td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>НЭР</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td>{{$male->first_name}}</td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>ЦОЛ</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td>{{$male->skill}}</td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>ХАРЪЯА</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td>{{$male->club}}</td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>ХАНА</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td></td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>ХАСАА</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td></td>
+                      @endforeach
                     </tr>
                     <tr>
                       <th>БҮГД</th>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
-                      <td>Chocolate</td>
+                      @foreach($maleAthletes as $male)
+                      <td></td>
+                      @endforeach
                     </tr>
                     </table>
                   </div>       
