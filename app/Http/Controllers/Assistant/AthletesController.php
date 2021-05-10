@@ -108,6 +108,7 @@ class AthletesController extends Controller
     public function participate(Request $request){
         $checked_array = $request->id;
             foreach($request->id as $key => $value){
+               
                 $athlete = Athletes::where('id', $request->id[$key])->get();
                 $competition = Competition::findOrFail($request->value[0]);
                 $competition->athletes()->attach($athlete);
@@ -126,16 +127,16 @@ class AthletesController extends Controller
         }
     
 
-    public function participantAthletes(){
+   /* public function participantAthletes(){
         $participant = Participate::all();
         return view('assistant.participate-athletes')->with('participant', $participant);
-    }
+    }*/
 
-    public function participantDelete(Request $request){
+    /*public function participantDelete(Request $request){
         $ids = $request->ids;
         Participate::whereIn('id',$ids)->delete();
         return response()->json(['status'=>'Тамирчны мэдээллийг бүртгэлээс устгалаа']);
-    }
+    } */
 
     public function search(){
         $search_text = $_GET['query'];
@@ -177,12 +178,25 @@ class AthletesController extends Controller
 
     public function competitionDetail(Request $request, $id){
         $comp = Competition::find($id);
-        $athletes= DB::table('athletes')
+        $count= DB::table('athletes')
                 ->join('athletes_competition','athletes_competition.athletes_id','=','athletes.id')
                 ->where('athletes_competition.competition_id', $comp->id)
                 ->orderByRaw('score DESC')
-                ->get();
-        return view('assistant.competition-detail', compact('athletes', 'comp'));
+                ->count();
+
+               if($count != 0 ){
+                        $athletes= DB::table('athletes')
+                                ->join('athletes_competition','athletes_competition.athletes_id','=','athletes.id')
+                                ->join('skill', 'skill.id', '=' , 'athletes.skill_id')
+                                ->where('athletes_competition.competition_id', $comp->id)
+                                ->orderByRaw('rank_hierarchy DESC')
+                                ->get();
+                                //dd($athletes);
+                        return view('assistant.competition-detail', compact('athletes', 'comp'));
+               }else{
+                        Session::flash('statuscode','info');
+                        return redirect('/competition')->with('status','Тэмцээнд бүртгэгдсэн тамирчин байхгүй байна');
+               }
     }
 
     public function competitionStatus(Request $request, $id){

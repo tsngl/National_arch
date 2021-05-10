@@ -19,7 +19,14 @@ class CreateParticipateTable extends Migration
             $table->string('first_name');
             $table->string('gender');
             $table->string('skill');
+            $table->integer('skill_id');
+            $table->string('undsen_zahirgaa');
             $table->string('club');
+            $table->string('phone');
+            $table->integer('athletes_id');
+            $table->integer('competition_id');
+            $table->integer('score')->nullable();
+            $table->integer('rank_hierarchy');
             $table->timestamps();
         });
     }

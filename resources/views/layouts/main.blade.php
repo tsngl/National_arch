@@ -78,10 +78,16 @@
               <p>Архив</p>
             </a>
           </li>
-          <li class="{{'participant-athletes' == request()->path() ? 'active' : ''}}">
+          <!--<li class="{{'participant-athletes' == request()->path() ? 'active' : ''}}">
             <a href="/participant-athletes">
               <i class="now-ui-icons business_bulb-63"></i>
               <p>Тэмцээнд оролцогчид</p>
+            </a>
+          </li>-->
+          <li class="{{'new_rank' == request()->path() ? 'active' : ''}}">
+            <a href="/new_rank">
+              <i class="now-ui-icons business_bulb-63"></i>
+              <p>Цолны болзол</p>
             </a>
           </li>
           <!--<li>

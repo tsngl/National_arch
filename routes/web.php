@@ -86,6 +86,10 @@ Route::group(['middleware' => ['auth','assistant']], function(){
 });
 Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/judge', 'Judge\JudgeController@viewathletes');
+    Route::delete('/participate-deleteall', 'Judge\JudgeController@participantDeleteAll')->name('deleteallSelected');
+
+    Route::get('/choose-competition','Judge\JudgeController@competition');
+    Route::get('/choose-comp/{id}', 'Judge\JudgeController@choosedCompetitionAthletes');
 
     Route::get('/scoreboard','Judge\JudgeController@scoreboard');
 });

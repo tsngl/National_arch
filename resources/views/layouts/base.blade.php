@@ -39,12 +39,12 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-         <!-- <li class="{{'icons' == request()->path() ? 'active' : ''}}">
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
+          <li class="{{'choose-competition' == request()->path() ? 'active' : ''}}">
+            <a href="/choose-competition">
+              <i class="fa fa-thumb-tack"></i> 
+              <p>Тэмцээн</p>
             </a>
-          </li>-->
+          </li>
           <li class="{{'judge' == request()->path() ? 'active' : ''}}">
             <a href="/judge">
               <i class="fa fa-group"></i> 

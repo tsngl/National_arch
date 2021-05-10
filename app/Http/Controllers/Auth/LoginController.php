@@ -32,9 +32,9 @@ class LoginController extends Controller
         if(Auth::user()->user_type == 'Админ'){
             return 'dashboard';
         }else if(Auth::user()->user_type == 'Нарийн бичиг'){
-            return 'assistant';
+            return 'athletes-info';
         }else{
-            return 'judge';
+            return 'choose-competition';
         }
     }
 

@@ -15,6 +15,13 @@ class Participate extends Model
         'first_name',
         'gender',
         'skill',
+        'skill_id',
+        'undsen_zahirgaa',
         'club',
+        'phone',
+        'athletes_id',
+        'competition_id',
+        'score',
+        'rank_hierarchy',
     ];
 }

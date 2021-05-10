@@ -9,37 +9,49 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-              <div class="row">
-                <h4 class="card-title">Тамирчид</h4>
+                <h4 class="card-title">Тэмцээнд оролцох тамирчид</h4>
               </div>
               <style>
                 .w-10p{
                   width: 10% !important;
                 }
               </style>
-              <div id="notifDiv"></div>
               <div class="card-body">
-            
-              <form> 
+              <button type="button" id="selectedAll" class="btn btn-warning btn-sm float-right"><i class="fa fa-refresh"></i> ШИНЭЧЛЭХ</button>
+              <!--<button type="button" class="btn btn-warning btn-sm float-right"><i class="fa fa-cloud-upload"></i> АРХИВЛАХ</button>-->
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary" style="font-style:italic">
-                      <th class="ml-5 pl-5">Овог</th>
+                      <th class="w-10p">
+                          <div class="form-check ">
+                              <label class="form-check-label">
+                                <input class="form-check-input" id="chkCheckAll" type="checkbox">
+                                <span class="form-check-sign"></span>
+                              </label>
+                            </div>
+                      </th>
+                      <th>Овог</th>
                       <th>Нэр</th>
                       <th>Хүйс</th>
                       <th>Цол зэрэг</th>
                       <th>Харъяа клуб</th>
-                      <th>Оноо</th>
                     </thead>
                     <tbody>
-                    @foreach($athletes as $pivotTable)
-                      <tr>
-                        <td class="ml-5 pl-5">{{$pivotTable->last_name}}</td>
-                        <td>{{$pivotTable->first_name}}</td>
-                        <td>{{$pivotTable->gender}}</td>
-                        <td>{{$pivotTable->skill}}</td>
-                        <td>{{$pivotTable->club}}</td>
-                        <td>{{$pivotTable->score }}</td>
+                    @foreach($participant as $athlete)
+                      <tr id="sid{{$athlete->id}}">
+                        <td>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input checkBoxClass" type="checkbox" name="ids" value="{{$athlete->id}}"/>
+                                <span class="form-check-sign"></span>
+                              </label>
+                            </div>
+                          </td>
+                        <td>{{$athlete->last_name}}</td>
+                        <td>{{$athlete->first_name}}</td>
+                        <td>{{$athlete->gender}}</td>
+                        <td>{{$athlete->skill}}</td>
+                        <td>{{$athlete->club}}</td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -53,43 +65,37 @@
 @endsection
 
 @section('scripts')
-<!--<script>
-  $(document).ready(function(){
 
-      $('.select_btn').on('click', function(e){
-          e.preventDefault();
-          const value = [];
+<script>
+  $(function(e){
 
-          $('select').each(function(){
-              value.push($(this).children('option:selected').data('id'));
-          }); 
-          console.log(value);
-          $.ajax({
-              url: '/selected-comp',
-              type: 'POST',
-              data: {
-                  "_token" : "{{csrf_token()}}",
-                  value : value
-              },
-              success: function(response){
-                  if(response.status){
-                        swal({
-                            title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
-                            icon: 'success',
-                            button: "ОК",
-                          });
-                        $('input[type="checkbox"]').prop('checked',false);
-                  } else{
-                    console.log('error');
-                  }
-              },
-              error: function(response){
-                console.log('error');
-              }
-          });
-
+      $("#chkCheckAll").click(function(){
+          $(".checkBoxClass").prop('checked', $(this).prop("checked")); 
       });
-      
+
+      $("#selectedAll").click(function(e){
+        e.preventDefault();
+        var allids = [];
+
+        $("input:checkbox[name=ids]:checked").each(function(){
+            allids.push($(this).val());
+        });
+          //alert(allids);
+
+        $.ajax({
+            url:'{{route('deleteallSelected')}}',
+            type: 'DELETE',
+            data:{
+                _token:$("input[name=_token]").val(),
+                ids:allids
+            },
+            success: function(response){
+              $.each(allids, function(key,val){
+                $("#sid"+val).remove();
+              })
+            }
+        });
+      })
   });
-</script>-->
+</script>
 @endsection
