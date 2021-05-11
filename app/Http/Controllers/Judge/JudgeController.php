@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Participate;
 use App\Models\Athletes;
+use App\Models\Skill;
 use App\Models\Competition;
 use Illuminate\Support\Facades\DB;
 
@@ -75,5 +76,5 @@ class JudgeController extends Controller
                 
      return view('judge.scoreboardF')->with('femaleAthletes', $femaleAthletes);
     }
-    
+
 }

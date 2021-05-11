@@ -93,4 +93,5 @@ Route::group(['middleware' => ['auth','judge']], function(){
 
     Route::get('/scoreboard','Judge\JudgeController@scoreboard');
     Route::get('/boardFemale','Judge\JudgeController@boardFemale' );
+
 });
