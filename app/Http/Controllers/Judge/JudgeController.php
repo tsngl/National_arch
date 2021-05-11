@@ -59,19 +59,21 @@ class JudgeController extends Controller
      }
 
     public function scoreboard(){
-        $femaleAthletes= DB::table('participate')
-                ->where('gender', 'Эм')
-                ->orderByRaw('rank_hierarchy DESC')
-                ->get();
-               // dd($femaleAthletes);
         $maleAthletes= DB::table('participate')
                 ->where('gender', 'Эр')
                 ->orderByRaw('rank_hierarchy DESC')
                 ->get();
-        $count = DB::table('participate')
+
+    return view('judge.scoreboardM')->with('maleAthletes', $maleAthletes);
+    }
+
+    public function boardFemale(){
+        $femaleAthletes= DB::table('participate')
                 ->where('gender', 'Эм')
                 ->orderByRaw('rank_hierarchy DESC')
-                ->count(); 
-    return view('judge.scoreboard', compact('femaleAthletes','maleAthletes','count'));
+                ->get();
+                
+     return view('judge.scoreboardF')->with('femaleAthletes', $femaleAthletes);
     }
+    
 }

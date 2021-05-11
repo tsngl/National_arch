@@ -92,4 +92,5 @@ Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/choose-comp/{id}', 'Judge\JudgeController@choosedCompetitionAthletes');
 
     Route::get('/scoreboard','Judge\JudgeController@scoreboard');
+    Route::get('/boardFemale','Judge\JudgeController@boardFemale' );
 });

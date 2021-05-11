@@ -51,12 +51,39 @@
               <p>Тамирчид</p>
             </a>
           </li>
-          <li class="{{'scoreboard' == request()->path() ? 'active' : ''}}">
+          <!--<li class="{{'scoreboard' == request()->path() ? 'active' : ''}}">
             <a href="/scoreboard">
               <i class="now-ui-icons education_paper"></i>
               <p>Онооны самбар</p>
             </a>
-          </li>
+          </li>-->
+          <li>
+              <a data-toggle="collapse" href="#pagesExamples" class="" aria-expanded="true">
+                  <i class="now-ui-icons education_paper"></i>
+                        <p>
+                        Онооны самбар<b class="caret"></b>
+                        </p>
+             </a>
+
+                  <div class="collapse show" id="pagesExamples" style="">
+                        <ul class="nav">
+                          <li class="{{'scoreboard' == request()->path() ? 'active' : ''}}">
+                              <a href="/scoreboard">
+                                  <span class="sidebar-normal">ЭРЭГТЭЙ ТАМИРЧИД</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="collapse show" id="pagesExamples" style="">
+                        <ul class="nav">
+                          <li class="{{'boardFemale' == request()->path() ? 'active' : ''}}">
+                              <a href="/boardFemale">
+                                  <span class="sidebar-normal">ЭМЭГТЭЙ ТАМИРЧИД</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons sport_trophy"></i>
