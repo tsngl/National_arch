@@ -1,76 +1,75 @@
 @extends('layouts.base')
 
 @section('title')
-    Үндэсний сур харваа
+Үндэсний сур харваа
 @endsection
 
 @section('content')
 <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title" style="text-align:center">ҮНДЭСНИЙ СУР ХАРВААНЫ САМБАР</h4>
-              </div>
-              <style>
-                .w-10p{
-                  width: 10% !important;
-                }
-              </style>
-              <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered">
-                    <tr>
-                      <th colspan="6"></th>
-                    </tr>
-                    <tr>
-                      <th rowspan="7" class="rotate" style="text-align:center">Мэргэ</th>
-                      <th>ОВОГ</th>
-                      @foreach($maleAthletes as $male)
-                      <td>{{$male->last_name}}</td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>НЭР</th>
-                      @foreach($maleAthletes as $male)
-                      <td>{{$male->first_name}}</td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>ЦОЛ</th>
-                      @foreach($maleAthletes as $male)
-                      <td>{{$male->skill}}</td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>ХАРЪЯА</th>
-                      @foreach($maleAthletes as $male)
-                      <td>{{$male->club}}</td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>ХАНА</th>
-                      @foreach($maleAthletes as $male)
-                      <td></td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>ХАСАА</th>
-                      @foreach($maleAthletes as $male)
-                      <td></td>
-                      @endforeach
-                    </tr>
-                    <tr>
-                      <th>БҮГД</th>
-                      @foreach($maleAthletes as $male)
-                      <td></td>
-                      @endforeach
-                    </tr>
-                    </table>
-                  </div>       
-              </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title" style="text-align:center">ҮНДЭСНИЙ СУР ХАРВААНЫ САМБАР</h4>
+      </div>
+      <style>
+        .table {
+          display: flex;
+        }
+
+        .head {
+          width: 100px;
+          padding: 10px;
+          border: 1px solid gray;
+        }
+
+        .body {
+          width: 228px;
+          padding: 10px;
+          border: 1px solid gray;
+        }
+      </style>
+      <div class="card-body">
+        <div class="table-responsive">
+          <?php
+          $count = 0;
+?>
+          @foreach($femaleAthletes as $male)
+          <?php 
+          
+          if ($count == 0) {
+            echo '<br><div class="table">
+            <div class="side">
+              <div class="head"><b>Овог</b></div>
+              <div class="head"><b>Нэр</b></div>
+              <div class="head"><b>Цол</b></div>
+              <div class="head"><b>Харъяа</b></div>
+              <div class="head" style="height:120px"><b>ХАНА</b></div>
+              <div class="head" style="height:120px"><b>ХАСАА</b></div>
+              <div class="head"><b>Бүгд</b></div>
+            </div>';
+          }
+          $count++; 
+          ?>
+            <div class="side">
+              <div class="body">{{$male->last_name}}</div>
+              <div class="body">{{$male->first_name}}</div>
+              <div class="body">{{$male->skill}}</div>
+              <div class="body">{{$male->club}}</div>
+              <div class="body" style="height: 120px"></div>
+              <div class="body" style="height: 120px"></div>
+              <div class="body" style="height: 43px"></div>
             </div>
-          </div>
+          <?php
+          if ($count == 4) {
+            echo "</div>";
+            $count = 0;
+          } ?>
+          @endforeach
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')

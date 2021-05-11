@@ -63,10 +63,15 @@ class JudgeController extends Controller
                 ->where('gender', 'Эм')
                 ->orderByRaw('rank_hierarchy DESC')
                 ->get();
+               // dd($femaleAthletes);
         $maleAthletes= DB::table('participate')
                 ->where('gender', 'Эр')
                 ->orderByRaw('rank_hierarchy DESC')
                 ->get();
-    return view('judge.scoreboard', compact('femaleAthletes','maleAthletes'));
+        $count = DB::table('participate')
+                ->where('gender', 'Эм')
+                ->orderByRaw('rank_hierarchy DESC')
+                ->count(); 
+    return view('judge.scoreboard', compact('femaleAthletes','maleAthletes','count'));
     }
 }
