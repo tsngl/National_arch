@@ -22,6 +22,7 @@
                       <th></th>
                     </thead>
                     <tbody>
+                @if(count($promotion) > 0)
                     @foreach($promotion as $row)
                       <tr>
                         <td>{{$row->last_name}}</td>
@@ -33,6 +34,12 @@
                         </td>
                       </tr>
                     @endforeach
+                    @else
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                        <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                        <span data-notify="message"><b>Цолны болзол хангасан тамирчин байхгүй байна !</b></span>
+                    </div>
+                @endif
                     </tbody>
                   </table>
                 </div>
