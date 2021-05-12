@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -87,7 +88,7 @@
                  <div class="panel-body">{{$title->description}}<a href="#">Дэлгэрэнгүй</a></div>
               </div>
                   <div class="card-footer">
-                      <footer class="blockquote-footer float-right"><cite title="Source Title">{{$title->created_at}}</cite></footer>
+                      <footer class="float-right"><i class="fa fa-calendar"> {{$title->created_at}}</i></footer>
                   </div>
               @endforeach
             </div>
@@ -99,7 +100,7 @@
 <footer class="text-center text-dark fixed-bottom bg-light" >
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2021 Copyright:
+    © 2021 Зохиогчийн эрх:
     <a class="text-dark" href="">Монголын үндэсний сур харваа</a>
   </div>
    <!--Copyright -->

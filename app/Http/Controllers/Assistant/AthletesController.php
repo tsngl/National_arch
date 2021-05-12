@@ -213,4 +213,31 @@ class AthletesController extends Controller
         return redirect('/competition')->with('status','Тэмцээн устгагдсан');
         }
     }
+
+    public function newRank(){
+        $participant_Athletes = Participate::all();
+            foreach($participant_Athletes as $competition){
+                $comp_id = $competition->competition_id;
+            }  
+        $competition_rank = Competition::find($comp_id);
+
+        if($competition_rank->rank == 9){
+            $promotion  = DB::table('participate')
+                    ->where('rank_hierarchy', '<=' , 9 )
+                    ->where('score', '>=' , 30)
+                    ->get();
+            if(!$promotion->isEmpty()){
+                Session::flash('statuscode','info');
+                return redirect('/new_rank')->with('status','Цолны болзол хангасан тамирчин байхгүй байна');
+            }else{
+                return view('assistant.rankUp')->with('promotion', $promotion); 
+            }
+        }else {
+            Session::flash('statuscode','info');
+            return redirect('/new_rank')->with('status','Уг тэмцээн цол олгохгүй');
+            }
+         
+        }
+    
+    
 }

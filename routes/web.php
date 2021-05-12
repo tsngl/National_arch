@@ -22,9 +22,7 @@ Route::get('/', function () {
 Route::get('/relationship', function () {
     
     $athlete = \App\Models\Athletes::first();
-
     $competition = \App\Models\Competition::all();
-
     //$competition->athletes()->attach($athlete);
     $athlete->competitions()->attach($competition);
 
@@ -83,6 +81,8 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::put('/comp-update/{id}','Assistant\AthletesController@competitionupdate');
     Route::get('/comp-details/{id}','Assistant\AthletesController@competitionDetail');
     Route::get('/comp-delete/{id}','Assistant\AthletesController@competitionStatus');
+
+    Route::get('/new_rank','Assistant\AthletesController@newRank');
 });
 Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/judge', 'Judge\JudgeController@viewathletes');
