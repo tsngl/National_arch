@@ -71,12 +71,12 @@
               <p>Нийтлэл</p>
             </a>
           </li>
-          <li class="active-pro">
+         <!-- <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons sport_trophy"></i>
               <p>Тэмцээний явц</p>
             </a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>

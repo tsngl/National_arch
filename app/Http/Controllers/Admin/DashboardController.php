@@ -19,7 +19,15 @@ class DashboardController extends Controller
         $athletes = DB::table('athletes')->count();
         $competition = DB::table('competition')->count();
         $post = DB::table('post')->count();
-        return view('admin.dashboard', compact('user', 'athletes', 'competition', 'post'));
+        $male = DB::table('participate')
+                ->where('gender' , 'Эр')
+                ->orderByRaw('score DESC')
+                ->get();
+        $female = DB::table('participate')
+                ->where('gender' , 'Эм')
+                ->orderByRaw('score DESC')
+                ->get();
+        return view('admin.dashboard', compact('user', 'athletes', 'competition', 'post','male','female'));
     }
     public function registered(){
         $users = User::all();
