@@ -8,6 +8,7 @@ use App\Models\Participate;
 use App\Models\Athletes;
 use App\Models\Skill;
 use App\Models\Competition;
+use App\Models\Athletes_Competition;
 use Illuminate\Support\Facades\DB;
 
 class JudgeController extends Controller
@@ -82,21 +83,35 @@ class JudgeController extends Controller
         $skill_table_id->score = $skill_table_id->score + $request->input('score');
         $skill_table_id->update();
 
-        // $pivot_table_score = DB::table('athletes_competition')
-        //             ->where('athletes_id' ,  $skill_table_id->athletes_id)
-        //             ->where('competition_id' ,  $skill_table_id->competition_id)
-        //             ->get();
+        $pivot_table_score = DB::table('athletes_competition')
+                    ->where('athletes_id' ,  $skill_table_id->athletes_id)
+                    ->where('competition_id' ,  $skill_table_id->competition_id)
+                    ->get();
+                    //dd($pivot_table_score);
+        foreach($pivot_table_score as $score){
+            $ss = Athletes_Competition::find($score->id);
+            $ss->score = $skill_table_id->score;
+            $ss->update();
 
-
-        //dd($pivot_table_score->score);
+        }
         return redirect('/scoreboard');
     }
 
     public function updateScoreFemale(Request $request, $id){
         $skill_table_id = Participate::find($id);
         $skill_table_id->score = $skill_table_id->score + $request->input('score');
-           // dd($skill_table_id->score);
         $skill_table_id->update();
+
+        $pivot_table_score = DB::table('athletes_competition')
+                            ->where('athletes_id' ,  $skill_table_id->athletes_id)
+                            ->where('competition_id' ,  $skill_table_id->competition_id)
+                            ->get();
+            foreach($pivot_table_score as $score){
+            $ss = Athletes_Competition::find($score->id);
+            $ss->score = $skill_table_id->score;
+            $ss->update();
+
+            }
 
         return redirect('/boardFemale');
     }
