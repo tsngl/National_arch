@@ -93,5 +93,7 @@ Route::group(['middleware' => ['auth','judge']], function(){
 
     Route::get('/scoreboard','Judge\JudgeController@scoreboard');
     Route::get('/boardFemale','Judge\JudgeController@boardFemale' );
+    Route::put('/update-score/{id}', 'Judge\JudgeController@updateScoreMale');
+    Route::put('/update-scoreF/{id}','Judge\JudgeController@updateScoreFemale');
 
 });

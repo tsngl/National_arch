@@ -33,7 +33,7 @@
           <?php
           $count = 0;
 ?>
-          @foreach($femaleAthletes as $male)
+          @foreach($femaleAthletes as $female)
           <?php 
           
           if ($count == 0) {
@@ -51,13 +51,29 @@
           $count++; 
           ?>
             <div class="side">
-              <div class="body">{{$male->last_name}}</div>
-              <div class="body">{{$male->first_name}}</div>
-              <div class="body">{{$male->skill}}</div>
-              <div class="body">{{$male->club}}</div>
-              <div class="body" style="height: 120px"></div>
-              <div class="body" style="height: 120px"></div>
-              <div class="body" style="height: 43px"></div>
+              <div class="body">{{$female->last_name}}</div>
+              <div class="body">{{$female->first_name}}</div>
+              <div class="body">{{$female->skill}}</div>
+              <div class="body">{{$female->club}}</div>
+              <div class="body" style="height: 120px">
+                <form action="/update-scoreF/{{$female->id}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        @csrf
+                  <input type="text" name="score" class="score" style="height:70px"><br>
+                  <button type="submit" class="btn btn-info btn-sm btn-outline-success btn-icon float-right enter_score"><i class="	fa fa-check"></i></button>
+                </form>
+              </div>
+              <div class="body" style="height: 120px">
+                <form action="/update-scoreF/{{$female->id}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        @csrf
+                  <input type="text" name="score" class="score" style="height:70px"><br>
+                  <button type="submit" class="btn btn-info btn-sm btn-outline-success btn-icon float-right enter_score"><i class="	fa fa-check"></i></button>
+                </form>
+              </div>
+              <div class="body" style="height: 43px; text-align:center"><b>{{$female->score}}</b></div>
             </div>
           <?php
           if ($count == 4) {

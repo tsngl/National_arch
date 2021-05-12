@@ -58,14 +58,25 @@
               <div class="body">{{$male->skill}}</div>
               <div class="body">{{$male->club}}</div>
               <div class="body" style="height: 120px">
+                <form action="/update-score/{{$male->id}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        @csrf
                   <input type="text" name="score" class="score" style="height:70px"><br>
-                  <button class="btn btn-info btn-sm btn-outline-success btn-icon float-right enter_score"><i class="	fa fa-check"></i></button>
+                  <button type="submit" class="btn btn-info btn-sm btn-outline-success btn-icon float-right enter_score"><i class="	fa fa-check"></i></button>
+                </form>
               </div>
+
               <div class="body" style="height: 120px">
+                <form action="/update-score/{{$male->id}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        @csrf
                   <input type="text" name="score" class="score" style="height:70px"><br>
                   <button class="btn btn-info btn-sm btn-outline-success btn-icon float-right enter_score"><i class="	fa fa-check"></i></button>
+                  </form>
               </div>
-              <div class="body" style="height: 43px"></div>
+              <div class="body" style="height: 43px; text-align:center"><b>{{$male->score}}</b></div>
             </div>
           <?php
           if ($count == 4) {
@@ -81,56 +92,4 @@
 @endsection
 
 @section('scripts')
-<script>
- $(document).ready(function(){
-
-$('.enter_score').on('click', function(e){
-    e.preventDefault();
-
-    const id = [];
-
-    $('input[name^="score"]').each(function(){
-       var score = $(this).val();
-    });
-
-    $('input[name^="id"]').on('click' function(){
-        id.push($(this).val());
-    });
-
-          alert(id);
-
-    // $.ajax({
-    //     url: '{{route('participate.athletes')}}',
-    //     type: 'POST',
-    //     data: {
-    //         "_token" : "{{csrf_token()}}",
-    //         id : id,
-    //         last_name : last_name,
-    //         first_name : first_name,
-    //         gender : gender,
-    //         skill : skill,
-    //         club : club,
-    //         value : value
-    //     },
-    //     success: function(response){
-    //         if(response.status){
-    //               swal({
-    //                   title: 'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ',
-    //                   icon: 'success',
-    //                   button: "ОК",
-    //                 });
-    //               $('input[type="checkbox"]').prop('checked',false);
-    //         } else{
-    //           console.log('error');
-    //         }
-    //     },
-    //     error: function(response){
-    //       console.log('error');
-    //     }
-    // });
-
-});
-
-});
-</script>
 @endsection

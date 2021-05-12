@@ -42,7 +42,7 @@ class JudgeController extends Controller
                 $participant->save();                  
                     }
          //return $this->scoreboard($id);  
-         redirect('/choose-competition'); 
+        return redirect('/choose-competition'); 
 
        //return redirect(route('judge',$comp->id));
     }   
@@ -75,6 +75,30 @@ class JudgeController extends Controller
                 ->get();
                 
      return view('judge.scoreboardF')->with('femaleAthletes', $femaleAthletes);
+    }
+
+    public function updateScoreMale(Request $request, $id){
+        $skill_table_id = Participate::find($id);
+        $skill_table_id->score = $skill_table_id->score + $request->input('score');
+        $skill_table_id->update();
+
+        // $pivot_table_score = DB::table('athletes_competition')
+        //             ->where('athletes_id' ,  $skill_table_id->athletes_id)
+        //             ->where('competition_id' ,  $skill_table_id->competition_id)
+        //             ->get();
+
+
+        //dd($pivot_table_score->score);
+        return redirect('/scoreboard');
+    }
+
+    public function updateScoreFemale(Request $request, $id){
+        $skill_table_id = Participate::find($id);
+        $skill_table_id->score = $skill_table_id->score + $request->input('score');
+           // dd($skill_table_id->score);
+        $skill_table_id->update();
+
+        return redirect('/boardFemale');
     }
 
 }
