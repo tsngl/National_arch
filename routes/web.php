@@ -96,4 +96,6 @@ Route::group(['middleware' => ['auth','judge']], function(){
     Route::put('/update-score/{id}', 'Judge\JudgeController@updateScoreMale');
     Route::put('/update-scoreF/{id}','Judge\JudgeController@updateScoreFemale');
 
+    Route::get('/competition_process', 'Judge\JudgeController@competitionProcess');
+
 });

@@ -116,4 +116,16 @@ class JudgeController extends Controller
         return redirect('/boardFemale');
     }
 
+    public function competitionProcess(){
+        $male = DB::table('participate')
+                    ->where('gender' , 'Эр')
+                    ->orderByRaw('score DESC')
+                    ->get();
+        $female = DB::table('participate')
+                    ->where('gender' , 'Эм')
+                    ->orderByRaw('score DESC')
+                    ->get();
+        return view('judge.process', compact('male','female'));
+    }
+
 }

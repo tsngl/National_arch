@@ -84,8 +84,8 @@
                       </ul>
                   </div>
               </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
+          <li class="{{'competition_process' == request()->path() ? 'active' : ''}}">
+            <a href="/competition_process">
               <i class="now-ui-icons sport_trophy"></i>
               <p>Тэмцээний явц</p>
             </a>
