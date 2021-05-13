@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/athlete-edit/{id}','Assistant\AthletesController@athletesedit');
     Route::put('/athletes-update/{id}','Assistant\AthletesController@athletesupdate');
     Route::delete('/athlete-delete/{id}','Assistant\AthletesController@athletesdelete');
+    Route::get('/search-athletes','Assistant\AthletesController@athletesSearch');
 
     Route::get('/athlete-archived','Assistant\AthletesController@archive');
     Route::get('/athlete-restore/{id}','Assistant\AthletesController@restore');
@@ -83,6 +84,7 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/comp-delete/{id}','Assistant\AthletesController@competitionStatus');
 
     Route::get('/new_rank','Assistant\AthletesController@newRank');
+    Route::get('/report/{id}','Assistant\AthletesController@report');
 });
 Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/judge', 'Judge\JudgeController@viewathletes');

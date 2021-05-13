@@ -145,6 +145,13 @@ class AthletesController extends Controller
         return view('assistant.search',compact('athletes'));
     }
 
+    public function athletesSearch(){
+        $search_text = $_GET['query'];
+        $athletes = Athletes::where('first_name', 'LIKE', '%'.$search_text.'%')->get();
+        
+        return view('assistant.athletes-search',compact('athletes'));
+    }
+
     public function competition(){
         $comp = Competition::all();
         $comp = DB::table('competition')->paginate(5);
@@ -233,6 +240,11 @@ class AthletesController extends Controller
             return redirect('/new_rank')->with('status','Уг тэмцээн цол олгохгүй');
             }
         }
-    
+    public function report($id){
+        $info = Participate::find($id);
+        $competition = Competition::find($info->competition_id);
+        
+       return view('assistant.report', compact('info','competition'));
+    }
     
 }

@@ -58,9 +58,6 @@
                     </tbody>
                   </table>
                 </div>
-                   <div class="clearfix pagination float-right">
-                        {{$athletes->links("pagination::bootstrap-4")}}
-                    </div>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@
                         <td>{{$row->skill}}</td>
                         <td style="text-align:center">{{$row->score}}</td>
                         <td class="text-right">
-                        <a href="" class="btn btn-sm btn-outline-success btn-icon"><i class="fa fa-file-pdf-o" style="font-size:22px"></i></a>
+                        <a href="/report/{{$row->id}}" class="btn btn-sm btn-outline-success btn-icon"><i class="fa fa-file-pdf-o" style="font-size:22px"></i></a>
                         </td>
                       </tr>
                     @endforeach
