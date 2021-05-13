@@ -26,9 +26,6 @@
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="yellow">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
       <div class="logo">
         <a class="simple-text logo-mini">
           <img src="assets/img/log.png"/>
@@ -51,12 +48,6 @@
               <p>Тамирчид</p>
             </a>
           </li>
-          <!--<li class="{{'scoreboard' == request()->path() ? 'active' : ''}}">
-            <a href="/scoreboard">
-              <i class="now-ui-icons education_paper"></i>
-              <p>Онооны самбар</p>
-            </a>
-          </li>-->
           <li>
               <a data-toggle="collapse" href="#pagesExamples" class="" aria-expanded="true">
                   <i class="now-ui-icons education_paper"></i>
@@ -83,7 +74,7 @@
                           </li>
                       </ul>
                   </div>
-              </li>
+          </li>
           <li class="{{'competition_process' == request()->path() ? 'active' : ''}}">
             <a href="/competition_process">
               <i class="now-ui-icons sport_trophy"></i>
@@ -114,25 +105,7 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
               <li class="nav-item dropdown">
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->user_type }}
@@ -149,19 +122,6 @@
                       </form>
                     </div>
                </li>
-              <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons location_world"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>-->
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons users_single-02"></i>
@@ -184,29 +144,10 @@
 
       <footer class="footer">
         <div class=" container-fluid ">
-          <nav>
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="http://presentation.creative-tim.com">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Үндэсний сур харваа
           </div>
         </div>
       </footer>

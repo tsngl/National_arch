@@ -50,4 +50,4 @@
 @endsection
 
 @section('scripts')
-@endsectiona
+@endsection

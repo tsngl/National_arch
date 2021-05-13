@@ -39,7 +39,6 @@
           if ($count == 0) {
             echo '<br><div class="table">
             <div class="side">
-              <div class="head"></div>
               <div class="head"><b>Овог</b></div>
               <div class="head"><b>Нэр</b></div>
               <div class="head"><b>Цол</b></div>
@@ -52,7 +51,6 @@
           $count++; 
           ?>
             <div class="side">
-              <div class="body" style="height: 20px"><input type="hidden" name="id" value="{{$male->id}}"/></div>
               <div class="body">{{$male->last_name}}</div>
               <div class="body">{{$male->first_name}}</div>
               <div class="body">{{$male->skill}}</div>
