@@ -9,7 +9,9 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
+      <a href="/report-scoreboardM" class="btn btn-sm btn-outline-success btn-icon pull-right"><i class="fa fa-file-pdf-o" style="font-size:22px"></i></a>
         <h4 class="card-title" style="text-align:center">ҮНДЭСНИЙ СУР ХАРВААНЫ САМБАР</h4>
+        <h4 class="card-title" style="text-align:center">{{$comp_name}}</h4>
       </div>
       <style>
         .table {
