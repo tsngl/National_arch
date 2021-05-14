@@ -10,6 +10,7 @@ use App\Models\Skill;
 use App\Models\Competition;
 use App\Models\Athletes_Competition;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class JudgeController extends Controller
 {
@@ -126,6 +127,55 @@ class JudgeController extends Controller
                     ->orderByRaw('score DESC')
                     ->get();
         return view('judge.process', compact('male','female'));
+    }
+
+    public function reportFemale(){
+        $femaleAthletes= DB::table('participate')
+                ->where('gender', 'Эм')
+                ->orderByRaw('score DESC')
+                ->get();
+                
+     return $femaleAthletes;
+    }
+
+    public function pdf(){
+        $pdf = PDF::loadHTML($this->convert_report_data_to_html());
+        return $pdf->stream();
+    }
+
+    public function convert_report_data_to_html(){
+        $data = $this->reportFemale();
+        $output = '
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        </head>
+        <style>
+            body {
+                font-family:   DejaVu Sans;
+            }
+            </style>
+        <body>
+        <h3 align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</h3>
+        <table width="100%" style="border-collapse: collapse; border: 0px;">
+         <tr>
+       <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
+       <th style="border: 1px solid; padding:12px;" width="30%">Address</th>
+       <th style="border: 1px solid; padding:12px;" width="15%">City</th>
+       <th style="border: 1px solid; padding:12px;" width="15%">Postal Code</th>
+       <th style="border: 1px solid; padding:12px;" width="20%">Country</th>
+      </tr>';
+              foreach($data as $female){
+                $output .= '<tr>
+                <td style="border: 1px solid; padding:12px;">'.$female->last_name.'</td>
+                <td style="border: 1px solid; padding:12px;">'.$female->first_name.'</td>
+                <td style="border: 1px solid; padding:12px;">'.$female->skill.'</td>
+                <td style="border: 1px solid; padding:12px;">'.$female->club.'</td>
+                <td style="border: 1px solid; padding:12px;">'.$female->score.'</td>
+               </tr>';
+                }
+
+                $output .= '</table></body>';
+                return $output;
     }
 
 }

@@ -101,4 +101,6 @@ Route::group(['middleware' => ['auth','judge']], function(){
 
     Route::get('/competition_process', 'Judge\JudgeController@competitionProcess');
 
+    Route::get('report-scoreboardF','Judge\JudgeController@pdf');
+
 });
