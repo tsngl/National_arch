@@ -240,11 +240,5 @@ class AthletesController extends Controller
             Session::flash('statuscode','info');
             return redirect('/new_rank')->with('status','Уг тэмцээн цол олгохгүй');
             }
-        }
-    public function report($id){
-        $info = Participate::find($id);
-        $competition = Competition::find($info->competition_id);
-       return view('assistant.report', compact('info','competition'));
-    }
-    
+        }    
 }

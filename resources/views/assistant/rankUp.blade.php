@@ -19,7 +19,6 @@
                       <th>Нэр</th>
                       <th>Цол зэрэг</th>
                       <th style="text-align:center">Оноо</th>
-                      <th></th>
                     </thead>
                     <tbody>
                 @if(count($promotion) > 0)
@@ -29,9 +28,6 @@
                         <td>{{$row->first_name}}</td>
                         <td>{{$row->skill}}</td>
                         <td style="text-align:center">{{$row->score}}</td>
-                        <td class="text-right">
-                        <a href="/report/{{$row->id}}" class="btn btn-sm btn-outline-success btn-icon"><i class="fa fa-file-pdf-o" style="font-size:22px"></i></a>
-                        </td>
                       </tr>
                     @endforeach
                     @else

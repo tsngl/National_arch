@@ -42,18 +42,6 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <!--<li class="{{'assistant' == request()->path() ? 'active' : ''}}">
-            <a href="/assistant">
-              <i class="now-ui-icons design_app"></i>
-             <p>Хэрэглэгчийн самбар</p>
-            </a>
-          </li>
-          <li class="{{'icons' == request()->path() ? 'active' : ''}}">
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>-->
           <li class="{{'athletes-info' == request()->path() ? 'active' : ''}}">
             <a href="/athletes-info">
               <i class="fa fa-group"></i>

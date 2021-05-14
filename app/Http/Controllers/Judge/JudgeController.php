@@ -134,8 +134,17 @@ class JudgeController extends Controller
                 ->where('gender', 'Эм')
                 ->orderByRaw('score DESC')
                 ->get();
-                
      return $femaleAthletes;
+    }
+
+    public function competitionName(){
+        $competition = Participate::all();
+        foreach($competition as $comp){
+            $comp_id = $comp->competition_id;
+        }
+        $competition_name = Competition::find($comp_id);
+        $comp_name = $competition_name->competition_name;
+        return $comp_name;
     }
 
     public function pdf(){
@@ -145,6 +154,10 @@ class JudgeController extends Controller
 
     public function convert_report_data_to_html(){
         $data = $this->reportFemale();
+        $competition_name = $this->competitionName();
+        foreach($data as $created){
+            $created_at = $created->created_at;
+        }
         $output = '
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -155,26 +168,32 @@ class JudgeController extends Controller
             }
             </style>
         <body>
-        <h3 align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</h3>
+        <p align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</p>
+        <p align="center"><b>'.$competition_name.'</b></p><br>
+        <p align="left">'.$created_at.'</p>
         <table width="100%" style="border-collapse: collapse; border: 0px;">
          <tr>
-       <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
-       <th style="border: 1px solid; padding:12px;" width="30%">Address</th>
-       <th style="border: 1px solid; padding:12px;" width="15%">City</th>
-       <th style="border: 1px solid; padding:12px;" width="15%">Postal Code</th>
-       <th style="border: 1px solid; padding:12px;" width="20%">Country</th>
+       <th style="border: 1px solid; padding:12px;" width="15%">Овог</th>
+       <th style="border: 1px solid; padding:12px;" width="18%">Нэр</th>
+       <th style="border: 1px solid; padding:12px;" width="30%">Цол</th>
+       <th style="border: 1px solid; padding:12px;" width="25%">Харъяа</th>
+       <th style="border: 1px solid; padding:12px;" width="5%">Оноо</th>
       </tr>';
               foreach($data as $female){
                 $output .= '<tr>
-                <td style="border: 1px solid; padding:12px;">'.$female->last_name.'</td>
-                <td style="border: 1px solid; padding:12px;">'.$female->first_name.'</td>
-                <td style="border: 1px solid; padding:12px;">'.$female->skill.'</td>
-                <td style="border: 1px solid; padding:12px;">'.$female->club.'</td>
-                <td style="border: 1px solid; padding:12px;">'.$female->score.'</td>
+                <td style="border: 1px solid; padding:5px;">'.$female->last_name.'</td>
+                <td style="border: 1px solid; padding:5px;">'.$female->first_name.'</td>
+                <td style="border: 1px solid; padding:5px;">'.$female->skill.'</td>
+                <td style="border: 1px solid; padding:5px;">'.$female->club.'</td>
+                <td style="border: 1px solid; padding:5px;">'.$female->score.'</td>
                </tr>';
                 }
 
-                $output .= '</table></body>';
+                $output .= '</table>
+                <p style="text-align:center">Ерөнхий шүүгч................/Х.Хүрэлбаатар/</p>
+                <p style="text-align:center">Зурхайн шүүгч.................../Б.Бурмаа/</p>
+                <p style="text-align:center">Самбарын шүүгч................../С.Даваахүү/</p>
+                </body>';
                 return $output;
     }
 
