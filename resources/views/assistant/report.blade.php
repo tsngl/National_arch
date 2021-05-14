@@ -111,7 +111,7 @@ body
               </div>
                 </div><!-- row -->
                 <div class="text-right mt-3">
-                 <button type="button" class="btn btn-success">Хэвлэх</button>&nbsp;
+                 <a href="/convert-pdf" class="btn btn-success">Хэвлэх</a>&nbsp;
                 </div>
             </div><!-- container -->
           </div>

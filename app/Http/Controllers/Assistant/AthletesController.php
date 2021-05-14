@@ -11,6 +11,7 @@ use App\Models\Skill;
 use App\Models\Competition;
 use Session;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class AthletesController extends Controller
 {
@@ -243,8 +244,49 @@ class AthletesController extends Controller
     public function report($id){
         $info = Participate::find($id);
         $competition = Competition::find($info->competition_id);
-        
        return view('assistant.report', compact('info','competition'));
+    }
+
+    public function pdf(){
+        $pdf = PDF::loadHTML($this->convert_report_data_to_html());
+        return $pdf->stream();
+    }
+
+    public function data(){
+        $athletes = DB::table('participate')->get();
+        return $athletes;
+    }
+
+    public function convert_report_data_to_html(){
+        $report_data = $this->data();
+        $output = '<div class="table-responsive">
+                        <table id="datatable" class="table">
+                        <thead class=" text-primary" style="font-style:italic">
+                            <th>Овог</th>
+                            <th>Нэр</th>
+                            <th>Хүйс</th>
+                            <th>Цол зэрэг</th>
+                            <th>Үндсэн захиргаа</th>
+                            <th>Харъяа клуб</th>
+                            <th>Утасны дугаар</th>
+                        </thead>
+                        <tbody>';
+                foreach($report_data as $data){
+                    $output .= ' <tr>
+                                    <input type="hidden" class="delete_val_id" value="'.$data->id.'">
+                                    <td>'.$data->last_name.'</td>
+                                    <td>'.$data->first_name.'</td>
+                                    <td>'.$data->gender.'</td>
+                                    <td>'.$data->skill.'</td>
+                                    <td>'.$data->undsen_zahirgaa.'</td>
+                                    <td>'.$data->club.'</td>
+                                    <td>'.$data->phone.'</td>
+                                </tr>';
+                }
+                    $output .='  </tbody>
+                                </table>
+                                </div>';
+      return $output;
     }
     
 }
