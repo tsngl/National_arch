@@ -30,12 +30,18 @@
                         <td style="text-align:center">{{$row->score}}</td>
                       </tr>
                     @endforeach
+                @endif
+                    @if($competition_rank->rank != 9)
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                        <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                        <span data-notify="message"><b>"{{$competition_rank->competition_name}}"</b>Уг тэмцээн цол олгохгүй !</span>
+                    </div>
                     @else
                     <div class="alert alert-info alert-with-icon" data-notify="container">
                         <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
                         <span data-notify="message"><b>Цолны болзол хангасан тамирчин байхгүй байна !</b></span>
                     </div>
-                @endif
+                    @endif
                     </tbody>
                   </table>
                 </div>

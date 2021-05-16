@@ -148,7 +148,7 @@
                   gender : gender,
                   skill : skill,
                   club : club,
-                  value : value
+                  value : value,
               },
               success: function(response){
                   if(response.status){

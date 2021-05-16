@@ -77,6 +77,7 @@ class AthletesController extends Controller
         $archived->undsen_zahirgaa = $athletes->undsen_zahirgaa;
         $archived->club = $athletes->club;
         $archived->phone = $athletes->phone;
+        $archived->skill_id = $athletes->skill_id;
         $archived->save();
 
         $athletes->delete();
@@ -99,6 +100,7 @@ class AthletesController extends Controller
         $athlete->undsen_zahirgaa = $archive->undsen_zahirgaa;
         $athlete->club = $archive->club;
         $athlete->phone = $archive->phone;
+        $athlete->skill_id = $archive->skill_id;
         $athlete->save();
 
         $archive->delete();
@@ -108,21 +110,22 @@ class AthletesController extends Controller
 
     public function participate(Request $request){
         $checked_array = $request->id;
+        
             foreach($request->id as $key => $value){
                
                 $athlete = Athletes::where('id', $request->id[$key])->get();
                 $competition = Competition::findOrFail($request->value[0]);
                 $competition->athletes()->attach($athlete);
             
-                if(in_array($request->id[$key], $checked_array)){
-                    $participant = new Participate;
-                    $participant->last_name = $request->last_name[$key];
-                    $participant->first_name = $request->first_name[$key];
-                    $participant->gender = $request->gender[$key];
-                    $participant->skill = $request->skill[$key];
-                    $participant->club = $request->club[$key];
-                    $participant->save();
-                }
+                // if(in_array($request->id[$key], $checked_array)){
+                //     $participant = new Participate;
+                //     $participant->last_name = $request->last_name[$key];
+                //     $participant->first_name = $request->first_name[$key];
+                //     $participant->gender = $request->gender[$key];
+                //     $participant->skill = $request->skill[$key];
+                //     $participant->club = $request->club[$key];
+                //     $participant->save();
+                // }
             }
             return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
         }
@@ -229,16 +232,13 @@ class AthletesController extends Controller
             }  
         $competition_rank = Competition::find($comp_id);
 
-        if($competition_rank->rank == 9){
+        
             $promotion  = DB::table('participate')
                     ->where('rank_hierarchy', '<=' , 9 )
                     ->where('score', '>=' , 30)
                     ->get();
            
-            return view('assistant.rankUp')->with('promotion', $promotion); 
-        }else {
-            Session::flash('statuscode','info');
-            return redirect('/new_rank')->with('status','Уг тэмцээн цол олгохгүй');
-            }
+            return view('assistant.rankUp')->with('promotion', $promotion)->with('competition_rank',$competition_rank); 
+        
         }    
 }
