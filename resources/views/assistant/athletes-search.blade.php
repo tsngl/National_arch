@@ -62,6 +62,7 @@
             </div>
           </div>
         </div>
+        <p>Хайлтын үр дүн: {{$count}}</p>
 @endsection
 
 @section('scripts')

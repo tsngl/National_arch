@@ -152,8 +152,9 @@ class AthletesController extends Controller
     public function athletesSearch(){
         $search_text = $_GET['query'];
         $athletes = Athletes::where('first_name', 'LIKE', '%'.$search_text.'%')->get();
+        $count = $athletes->count();
         
-        return view('assistant.athletes-search',compact('athletes'));
+        return view('assistant.athletes-search',compact('athletes', 'count'));
     }
 
     public function competition(){

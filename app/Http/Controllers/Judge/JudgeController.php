@@ -160,7 +160,7 @@ class JudgeController extends Controller
     }
 
     public function pdf(){
-        $pdf = PDF::loadHTML($this->convert_report_data_to_html());
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadHTML($this->convert_report_data_to_html());
         return $pdf->stream();
     }
 
@@ -180,6 +180,7 @@ class JudgeController extends Controller
             }
             </style>
         <body>
+        <img src="'. public_path() .'logo.png">
         <p align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</p>
         <p align="center"><b>'.$competition_name.'</b><br>/Эмэгтэй тамирчид/</p><br>
         <p align="left">'.$created_at.'</p>
