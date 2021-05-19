@@ -178,9 +178,17 @@ class JudgeController extends Controller
             body {
                 font-family:   DejaVu Sans;
             }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+              }
             </style>
         <body>
-        <img src="'. public_path() .'logo.png">
+        <!--<img src="'. public_path() .'log.png">-->
+        <!--<img class="center" src="https://www.w3schools.com/images/w3schools_green.jpg" style="width:104px;height:142px;">-->
+        <img  src="127.0.0.1:8000/assets/img/log.jpg">
         <p align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</p>
         <p align="center"><b>'.$competition_name.'</b><br>/Эмэгтэй тамирчид/</p><br>
         <p align="left">'.$created_at.'</p>
