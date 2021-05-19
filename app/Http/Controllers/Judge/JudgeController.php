@@ -188,7 +188,7 @@ class JudgeController extends Controller
         <body>
         <!--<img src="'. public_path() .'log.png">-->
         <!--<img class="center" src="https://www.w3schools.com/images/w3schools_green.jpg" style="width:104px;height:142px;">-->
-        <img  src="127.0.0.1:8000/assets/img/log.jpg">
+        <img  src="127.0.0.1:8000/assets/img/log.png">
         <p align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</p>
         <p align="center"><b>'.$competition_name.'</b><br>/Эмэгтэй тамирчид/</p><br>
         <p align="left">'.$created_at.'</p>
@@ -247,6 +247,7 @@ class JudgeController extends Controller
             }
             </style>
         <body>
+        <img  src="127.0.0.1:8000/assets/img/log.png">
         <p align="center">МОНГОЛЫН ҮНДЭСНИЙ СУР ХАРВАА</p>
         <p align="center"><b>'.$competition_name.'</b><br>/Эрэгтэй тамирчид/</p><br>
         <p align="left">'.$created_at.'</p>
