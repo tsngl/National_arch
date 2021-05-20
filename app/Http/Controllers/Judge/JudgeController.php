@@ -277,4 +277,41 @@ class JudgeController extends Controller
                 return $output;
     }
 
+    public function reportParticipant(){
+        $aldar = Participate::where('club' , 'Алдар спорт хороо')->get();
+        $ysuuhei = Participate::where('club' , 'Есүхэй мэргэн')->get();
+        $khilchin = Participate::where('club' , 'Хилчин спорт хороо')->get();
+        $mergen = Participate::where('club' , 'Мэргэн зэв')->get();
+        $arkhangai = Participate::where('club' , 'Архангай')->get();
+        $bayn_ulgii = Participate::where('club' , 'Баян-Өлгий')->get();
+        $baynkhongor = Participate::where('club' , 'Баянхонгор')->get();
+        $bulgan = Participate::where('club' , 'Булган')->get();
+        $govi_altai = Participate::where('club' , 'Говь-Алтай')->get();
+        $govisumber = Participate::where('club' , 'Говьсүмбэр')->get();
+        $darkhan = Participate::where('club' , 'Дархан-Уул')->get();
+        $dornogovi = Participate::where('club' , 'Дорноговь')->get();
+        $dornod = Participate::where('club' , 'Дорнод')->get();
+        $dundgovi = Participate::where('club' , 'Дундговь')->get();
+        $zawkhan = Participate::where('club' , 'Завхан')->get();
+        $orkhon = Participate::where('club' , 'Орхон')->get();
+        $oworkhangai = Participate::where('club' , 'Өвөрхангай')->get();
+        $omnogovi = Participate::where('club' , 'Өмнөговь')->get();
+        $sukhbaatar = Participate::where('club' , 'Сүхбаатар')->get();
+        $selenge = Participate::where('club' , 'Сэлэнгэ')->get();
+        
+        $comp_id = DB::table('participate')->get();
+        foreach( $comp_id as $id){
+           $comp = Competition::find($id->competition_id);
+           $time = $id->created_at;
+        }
+        
+       
+            $pdf = PDF::loadView('judge.participant-report', compact('aldar', 'ysuuhei','khilchin','mergen','arkhangai','bayn_ulgii','baynkhongor','bulgan',
+                                                                        'govi_altai','govisumber','darkhan','dornogovi','dornod','dundgovi','zawkhan','orkhon',
+                                                                        'oworkhangai','omnogovi','sukhbaatar','selenge','comp','time'));
+            return $pdf->stream();
+        
+        
+    }
+
 }
