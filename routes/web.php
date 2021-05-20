@@ -15,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $posts = DB::table('post')->where('status', '1')->get();
+    $male = DB::table('participate')
+                ->where('gender' , 'Эр')
+                ->orderByRaw('score DESC')
+                ->limit(8)
+                ->get();
+    $female = DB::table('participate')
+                ->where('gender' , 'Эм')
+                ->orderByRaw('score DESC')
+                ->limit(8)
+                ->get();
     
-        return view('welcome')->with('posts', $posts);
+        return view('welcome')->with('posts', $posts)->with('male',$male)->with('female', $female);
 });
 
-Route::get('/relationship', function () {
-    
-    $athlete = \App\Models\Athletes::first();
-    $competition = \App\Models\Competition::all();
-    //$competition->athletes()->attach($athlete);
-    $athlete->competitions()->attach($competition);
-
-});
 
 Auth::routes();
 
