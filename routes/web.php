@@ -84,6 +84,8 @@ Route::group(['middleware' => ['auth','assistant']], function(){
     Route::get('/comp-delete/{id}','Assistant\AthletesController@competitionStatus');
 
     Route::get('/new_rank','Assistant\AthletesController@newRank');
+
+    Route::get('/report-athletes-info/{id}', 'Assistant\AthletesController@reportAthletes');
 });
 Route::group(['middleware' => ['auth','judge']], function(){
     Route::get('/judge', 'Judge\JudgeController@viewathletes');

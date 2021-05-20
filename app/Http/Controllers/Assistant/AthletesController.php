@@ -117,15 +117,6 @@ class AthletesController extends Controller
                 $competition = Competition::findOrFail($request->value[0]);
                 $competition->athletes()->attach($athlete);
             
-                // if(in_array($request->id[$key], $checked_array)){
-                //     $participant = new Participate;
-                //     $participant->last_name = $request->last_name[$key];
-                //     $participant->first_name = $request->first_name[$key];
-                //     $participant->gender = $request->gender[$key];
-                //     $participant->skill = $request->skill[$key];
-                //     $participant->club = $request->club[$key];
-                //     $participant->save();
-                // }
             }
             return response()->json(['status'=>'Сонгогдсон тамирчид тэмцээнд амжилттай бүртгэгдлээ']);
         }
@@ -242,4 +233,16 @@ class AthletesController extends Controller
             return view('assistant.rankUp')->with('promotion', $promotion)->with('competition_rank',$competition_rank); 
         
         }    
+
+    public function reportAthletes($id){
+        $info = Athletes::find($id);
+        
+        $comp_info = DB::table('competition')
+                    ->join('athletes_competition', 'athletes_competition.competition_id', '=' , 'competition.id')
+                    ->where('athletes_competition.athletes_id' , $id)
+                    ->get();
+       
+        $pdf = PDF::loadView('assistant.athletes-report', compact('info', 'comp_info'));
+        return $pdf->stream();
+    }
 }

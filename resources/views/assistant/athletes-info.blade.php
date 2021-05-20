@@ -35,6 +35,7 @@
                       <th>Утасны дугаар</th>
                       <th></th>
                       <th></th>
+                      <th></th>
                     </thead>
                     <tbody>
                     @foreach($athletes as $person)
@@ -49,6 +50,9 @@
                         <td>{{$person->phone}}</td>
                         <td>
                             <a href="/athlete-edit/{{$person->id}}" class="btn btn-info btn-sm btn-outline-info btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                        </td>
+                        <td>
+                            <a href="/report-athletes-info/{{$person->id}}" class="btn btn-sm btn-outline-success btn-icon pull-right"><i class="fa fa-file-pdf-o" style="font-size:22px"></i></a>
                         </td>
                         <td>
                         <button type="button" class="btn btn-danger delete_btn btn-sm btn-outline-primary btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>

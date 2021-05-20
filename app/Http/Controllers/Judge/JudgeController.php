@@ -211,7 +211,7 @@ class JudgeController extends Controller
                 }
 
                 $output .= '</table>
-                <p style="text-align:center">Ерөнхий шүүгч................/Х.Хүрэлбаатар/</p>
+                <p style="text-align:center">Ерөнхий шүүгч................/Б.Хүрэлбаатар/</p>
                 <p style="text-align:center">Зурхайн шүүгч.................../Б.Бурмаа/</p>
                 <p style="text-align:center">Самбарын шүүгч................../С.Даваахүү/</p>
                 </body>';
@@ -270,7 +270,7 @@ class JudgeController extends Controller
                 }
 
                 $output .= '</table>
-                <p style="text-align:center">Ерөнхий шүүгч................/Х.Хүрэлбаатар/</p>
+                <p style="text-align:center">Ерөнхий шүүгч................/Б.Хүрэлбаатар/</p>
                 <p style="text-align:center">Зурхайн шүүгч.................../Б.Бурмаа/</p>
                 <p style="text-align:center">Самбарын шүүгч................../С.Даваахүү/</p>
                 </body>';
