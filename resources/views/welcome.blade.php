@@ -151,8 +151,7 @@
             </div>
           </div>
         @endif
-</div>
-
+    </div>
         </main>
     </div>
 
