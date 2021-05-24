@@ -174,7 +174,7 @@ class DashboardController extends Controller
 
     public function posted(){
         $posts = DB::table('post')->where('status', '1')->get();
-        return view('welcome')->with('posts', $posts);
+        return view('post')->with('posts', $posts);
     }
 
     public function postedit(Request $request, $id){
