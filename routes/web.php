@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $comp = DB::table('participate')->get();
+
+    foreach($comp as $key ){
+        $name =  DB::table('competition')->where('id', $key->competition_id)->get();
+    }
+    foreach($name as $name){
+        $c_name = $name->competition_name;
+    }
+    
     $posts = DB::table('post')->where('status', '1')->get();
     $male = DB::table('participate')
                 ->where('gender' , 'Эр')
@@ -26,7 +35,7 @@ Route::get('/', function () {
                 ->limit(8)
                 ->get();
     
-        return view('welcome')->with('posts', $posts)->with('male',$male)->with('female', $female);
+        return view('welcome')->with('posts', $posts)->with('male',$male)->with('female', $female)->with('c_name', $c_name);
 });
 
 

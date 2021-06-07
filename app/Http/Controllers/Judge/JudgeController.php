@@ -15,7 +15,7 @@ use PDF;
 class JudgeController extends Controller
 {
     public function competition(){
-        $competition = Competition::all();
+        $competition = DB::table('competition')->where('status', 1)->get();
         return view('judge.choose-competition')->with('competition', $competition);
     }
     public function choosedCompetitionAthletes(Request $request, $id){
