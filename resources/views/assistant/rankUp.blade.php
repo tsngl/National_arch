@@ -13,7 +13,14 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table id="datatable" class="table">
+                  <table id="datatable" class="table"> 
+                @if($competition_rank->rank != 9)
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                        <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                        <span data-notify="message"><b>"{{$competition_rank->competition_name}}"</b>Уг тэмцээн цол олгохгүй !</span>
+                    </div>
+                @elseif(count($promotion) > 0 && $competition_rank->rank == 9)
+                    @foreach($promotion as $row)
                     <thead class=" text-primary" style="font-style:italic">
                       <th>Овог</th>
                       <th>Нэр</th>
@@ -21,8 +28,6 @@
                       <th style="text-align:center">Оноо</th>
                     </thead>
                     <tbody>
-                @if(count($promotion) > 0)
-                    @foreach($promotion as $row)
                       <tr>
                         <td>{{$row->last_name}}</td>
                         <td>{{$row->first_name}}</td>
@@ -34,12 +39,6 @@
                     <div class="alert alert-info alert-with-icon" data-notify="container">
                         <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
                         <span data-notify="message"><b>Цолны болзол хангасан тамирчин байхгүй байна !</b></span>
-                    </div>
-                @endif
-                    @if($competition_rank->rank != 9)
-                    <div class="alert alert-info alert-with-icon" data-notify="container">
-                        <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
-                        <span data-notify="message"><b>"{{$competition_rank->competition_name}}"</b>Уг тэмцээн цол олгохгүй !</span>
                     </div>
                     @endif
                     </tbody>
